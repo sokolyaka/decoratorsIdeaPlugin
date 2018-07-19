@@ -12,7 +12,8 @@ public class MethodWithEmptyBodyTest {
                 "@Override public void implementation(){}",
                 new MethodWithEmptyBody(
                         new OverrideMethod(
-                                new PublicMethod("void implementation();")),
+                                new PublicMethod(
+                                        new FromStringMethod("void implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -23,7 +24,8 @@ public class MethodWithEmptyBodyTest {
                 "@Override public String implementation(){return null;}",
                 new MethodWithEmptyBody(
                         new OverrideMethod(
-                                new PublicMethod("String implementation();")),
+                                new PublicMethod(
+                                        new FromStringMethod("String implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -34,7 +36,8 @@ public class MethodWithEmptyBodyTest {
                 "@Override public int implementation(){return 0;}",
                 new MethodWithEmptyBody(
                         new OverrideMethod(
-                                new PublicMethod("int implementation();")),
+                                new PublicMethod(
+                                        new FromStringMethod("int implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -45,7 +48,8 @@ public class MethodWithEmptyBodyTest {
                 "@Override public Double implementation(){return 0.0;}",
                 new MethodWithEmptyBody(
                         new OverrideMethod(
-                                new PublicMethod("Double implementation();")),
+                                new PublicMethod(
+                                        new FromStringMethod("Double implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -56,7 +60,8 @@ public class MethodWithEmptyBodyTest {
                 "@Override public float implementation(){return 0.0f;}",
                 new MethodWithEmptyBody(
                         new OverrideMethod(
-                                new PublicMethod("float implementation();")),
+                                new PublicMethod(
+                                        new FromStringMethod("float implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }

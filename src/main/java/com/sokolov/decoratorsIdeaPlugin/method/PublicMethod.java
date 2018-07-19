@@ -2,14 +2,14 @@ package com.sokolov.decoratorsIdeaPlugin.method;
 
 public class PublicMethod implements IMethod {
 
-    private final String methodDeclaration;
+    private final IMethod origin;
 
-    public PublicMethod(String methodDeclaration) {
-        this.methodDeclaration = methodDeclaration;
+    public PublicMethod(IMethod origin) {
+        this.origin = origin;
     }
 
     @Override
     public String implementation() {
-        return "public " + methodDeclaration;
+        return "public " + origin.implementation();
     }
 }
