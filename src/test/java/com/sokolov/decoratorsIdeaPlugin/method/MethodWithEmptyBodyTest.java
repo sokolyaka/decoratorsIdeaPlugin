@@ -19,6 +19,18 @@ public class MethodWithEmptyBodyTest {
     }
 
     @Test
+    public void implementationMap() {
+        Assert.assertEquals(
+                "@Override public Map<String, String> implementation(){return null;}",
+                new MethodWithEmptyBody(
+                        new OverrideMethod(
+                                new PublicMethod(
+                                        new FromStringMethod("Map<String, String> implementation();"))),
+                        DefaultReturnValuesProvider.get())
+                        .implementation());
+    }
+
+    @Test
     public void implementationString() {
         Assert.assertEquals(
                 "@Override public String implementation(){return null;}",

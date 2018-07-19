@@ -28,7 +28,7 @@ public class MethodWithEmptyBody implements IMethod {
                 return returnType;
             }
         }
-        throw new IllegalArgumentException("return type invalid = " + methodDeclaration);
+        return "null";
     }
 
     private String getDefaultReturnType(String returnType) {
