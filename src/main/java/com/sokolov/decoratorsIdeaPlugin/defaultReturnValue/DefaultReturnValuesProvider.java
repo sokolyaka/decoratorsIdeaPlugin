@@ -1,7 +1,5 @@
 package com.sokolov.decoratorsIdeaPlugin.defaultReturnValue;
 
-import com.sokolov.decoratorsIdeaPlugin.ObjectDefaultReturnValue;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;

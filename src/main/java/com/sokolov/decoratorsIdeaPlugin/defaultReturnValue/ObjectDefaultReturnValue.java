@@ -1,6 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin;
-
-import com.sokolov.decoratorsIdeaPlugin.defaultReturnValue.IDefaultReturnValue;
+package com.sokolov.decoratorsIdeaPlugin.defaultReturnValue;
 
 import java.util.Arrays;
 import java.util.Collections;

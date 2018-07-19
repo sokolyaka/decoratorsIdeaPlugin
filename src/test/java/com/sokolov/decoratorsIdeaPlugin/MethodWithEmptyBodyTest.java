@@ -1,6 +1,7 @@
 package com.sokolov.decoratorsIdeaPlugin;
 
 import com.sokolov.decoratorsIdeaPlugin.defaultReturnValue.DefaultReturnValuesProvider;
+import com.sokolov.decoratorsIdeaPlugin.method.MethodWithEmptyBody;
 import org.junit.Assert;
 import org.junit.Test;
 

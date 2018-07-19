@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin;
+package com.sokolov.decoratorsIdeaPlugin.method;
 
 import java.util.Map;
 
