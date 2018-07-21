@@ -15,4 +15,15 @@ public class OriginMethodTest {
                                         new FromStringMethod("void implementation();"))))
                         .implementation());
     }
+
+    @Test
+    public void implementationWithReturn() {
+        Assert.assertEquals(
+                "@Override public String implementation(){return origin.implementation();}",
+                new OriginMethod(
+                        new OverrideMethod(
+                                new PublicMethod(
+                                        new FromStringMethod("String implementation();"))))
+                        .implementation());
+    }
 }

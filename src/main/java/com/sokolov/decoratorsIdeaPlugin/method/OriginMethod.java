@@ -18,8 +18,11 @@ public class OriginMethod implements IMethod {
         int startIndex = findStartIndex(noSemicolon);
         int endIndex = noSemicolon.length();
 
-
-        return noSemicolon + "{origin." + noSemicolon.substring(startIndex, endIndex) + ";}";
+        if (noSemicolon.contains("void")) {
+            return noSemicolon + "{origin." + noSemicolon.substring(startIndex, endIndex) + ";}";
+        } else {
+            return noSemicolon + "{return origin." + noSemicolon.substring(startIndex, endIndex) + ";}";
+        }
     }
 
     private int findStartIndex(String implementation) {
