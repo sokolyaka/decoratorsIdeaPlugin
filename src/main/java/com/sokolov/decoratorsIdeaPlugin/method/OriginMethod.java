@@ -7,6 +7,24 @@ public class OriginMethod implements IMethod {
         this.origin = origin;
     }
 
+    private static String getMethodName(String methodNameWithParams) {
+        return methodNameWithParams.substring(0, methodNameWithParams.indexOf('('));
+    }
+
+    private static String getParamNames(String methodNameWithParams) {
+        String[] params =
+                methodNameWithParams
+                        .substring(
+                                methodNameWithParams.indexOf('('),
+                                methodNameWithParams.indexOf(')'))
+                        .split(",");
+        StringBuilder sb = new StringBuilder();
+        for (String param : params) {
+            sb.append(new ParameterFromString(param).name()).append(',');
+        }
+        return sb.deleteCharAt(sb.length() - 1).toString();
+    }
+
     @Override
     public String implementation() {
         String implementation = origin.implementation().trim();
@@ -18,10 +36,14 @@ public class OriginMethod implements IMethod {
         int startIndex = findStartIndex(noSemicolon);
         int endIndex = noSemicolon.length();
 
+        String methodNameWithParams = noSemicolon.substring(startIndex, endIndex);
+        String parameterNames = getParamNames(methodNameWithParams);
+        String originMethodCall =
+                "origin." + getMethodName(methodNameWithParams) + "(" + parameterNames + ");";
         if (noSemicolon.contains("void")) {
-            return noSemicolon + "{origin." + noSemicolon.substring(startIndex, endIndex) + ";}";
+            return noSemicolon + "{" + originMethodCall + "}";
         } else {
-            return noSemicolon + "{return origin." + noSemicolon.substring(startIndex, endIndex) + ";}";
+            return noSemicolon + "{return " + originMethodCall + "}";
         }
     }
 
