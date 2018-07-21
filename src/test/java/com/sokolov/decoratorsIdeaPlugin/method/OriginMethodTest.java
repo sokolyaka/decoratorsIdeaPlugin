@@ -28,6 +28,17 @@ public class OriginMethodTest {
     }
 
     @Test
+    public void implementationWithGenericsInParams() {
+        Assert.assertEquals(
+                "@Override public void implementation(Map<String, String> map, int aInt){origin.implementation(map,aInt);}",
+                new OriginMethod(
+                        new OverrideMethod(
+                                new PublicMethod(
+                                        new FromStringMethod("void implementation(Map<String, String> map, int aInt);"))))
+                        .implementation());
+    }
+
+    @Test
     public void implementationWithParam() {
         Assert.assertEquals(
                 "@Override public void implementation(String s){origin.implementation(s);}",

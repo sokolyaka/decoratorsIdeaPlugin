@@ -1,5 +1,7 @@
 package com.sokolov.decoratorsIdeaPlugin.method;
 
+import java.util.List;
+
 public class OriginMethod implements IMethod {
     private final IMethod origin;
 
@@ -12,15 +14,16 @@ public class OriginMethod implements IMethod {
     }
 
     private static String getParamNames(String methodNameWithParams) {
-        String[] params =
-                methodNameWithParams
-                        .substring(
-                                methodNameWithParams.indexOf('('),
-                                methodNameWithParams.indexOf(')'))
-                        .split(",");
+        List<IParameter> parameters =
+                new ListOfParametersFromString(
+                        methodNameWithParams
+                                .substring(
+                                        methodNameWithParams.indexOf('(') + 1,
+                                        methodNameWithParams.indexOf(')')))
+                        .asList();
         StringBuilder sb = new StringBuilder();
-        for (String param : params) {
-            sb.append(new ParameterFromString(param).name()).append(',');
+        for (IParameter param : parameters) {
+            sb.append(param.name()).append(',');
         }
         return sb.deleteCharAt(sb.length() - 1).toString();
     }
