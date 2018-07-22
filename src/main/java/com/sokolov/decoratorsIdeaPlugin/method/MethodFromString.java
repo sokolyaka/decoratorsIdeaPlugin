@@ -1,9 +1,9 @@
 package com.sokolov.decoratorsIdeaPlugin.method;
 
-public class FromStringMethod implements IMethod {
+public class MethodFromString implements IMethod {
     private final String methodDeclaration;
 
-    public FromStringMethod(String methodDeclaration) {
+    public MethodFromString(String methodDeclaration) {
         this.methodDeclaration = methodDeclaration;
     }
 

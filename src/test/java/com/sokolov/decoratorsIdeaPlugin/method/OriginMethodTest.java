@@ -12,7 +12,7 @@ public class OriginMethodTest {
                 new OriginMethod(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("void implementation();"))))
+                                        new MethodFromString("void implementation();"))))
                         .implementation());
     }
 
@@ -23,7 +23,7 @@ public class OriginMethodTest {
                 new OriginMethod(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("void implementation(String s, int aInt);"))))
+                                        new MethodFromString("void implementation(String s, int aInt);"))))
                         .implementation());
     }
 
@@ -34,7 +34,7 @@ public class OriginMethodTest {
                 new OriginMethod(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("void implementation(Map<String, String> map, int aInt);"))))
+                                        new MethodFromString("void implementation(Map<String, String> map, int aInt);"))))
                         .implementation());
     }
 
@@ -45,7 +45,7 @@ public class OriginMethodTest {
                 new OriginMethod(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("void implementation(String s);"))))
+                                        new MethodFromString("void implementation(String s);"))))
                         .implementation());
     }
 
@@ -56,7 +56,7 @@ public class OriginMethodTest {
                 new OriginMethod(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("String implementation();"))))
+                                        new MethodFromString("String implementation();"))))
                         .implementation());
     }
 }

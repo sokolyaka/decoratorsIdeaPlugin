@@ -13,7 +13,7 @@ public class MethodWithEmptyBodyTest {
                 new MethodWithEmptyBody(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("void implementation();"))),
+                                        new MethodFromString("void implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -25,7 +25,7 @@ public class MethodWithEmptyBodyTest {
                 new MethodWithEmptyBody(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("Map<String, String> implementation();"))),
+                                        new MethodFromString("Map<String, String> implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -37,7 +37,7 @@ public class MethodWithEmptyBodyTest {
                 new MethodWithEmptyBody(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("String implementation();"))),
+                                        new MethodFromString("String implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -49,7 +49,7 @@ public class MethodWithEmptyBodyTest {
                 new MethodWithEmptyBody(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("int implementation();"))),
+                                        new MethodFromString("int implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -61,7 +61,7 @@ public class MethodWithEmptyBodyTest {
                 new MethodWithEmptyBody(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("Double implementation();"))),
+                                        new MethodFromString("Double implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
@@ -73,7 +73,7 @@ public class MethodWithEmptyBodyTest {
                 new MethodWithEmptyBody(
                         new OverrideMethod(
                                 new PublicMethod(
-                                        new FromStringMethod("float implementation();"))),
+                                        new MethodFromString("float implementation();"))),
                         DefaultReturnValuesProvider.get())
                         .implementation());
     }
