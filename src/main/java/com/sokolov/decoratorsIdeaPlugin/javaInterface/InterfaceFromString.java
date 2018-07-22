@@ -48,6 +48,16 @@ public class InterfaceFromString implements IInterface {
 
     @Override
     public List<String> methods() {
-        return null;
+        String body =
+                interfaceStr.substring(
+                        interfaceStr.indexOf('{') + 1,
+                        interfaceStr.lastIndexOf('}'));
+        String[] methods = body.split(";");
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < methods.length - 1; i++) {
+            String method = methods[i];
+            result.add(method.trim() + ";");
+        }
+        return result;
     }
 }

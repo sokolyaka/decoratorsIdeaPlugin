@@ -70,6 +70,23 @@ public class InterfaceFromStringTest {
 
     @Test
     public void methods() {
+        String[] actual =
+                new InterfaceFromString(
+                        "package com.sokolov.decoratorsIdeaPlugin.method.parameter;\n" +
+                                "\n" +
+                                "import java.util.List;\n" +
+                                "import org.junit.Assert;\n" +
+                                "\n" +
+                                "public interface IListOfParameters {\n" +
+                                "\n" +
+                                "    List<IParameter> asList();\n" +
+                                "}\n")
+                        .methods()
+                        .toArray(new String[0]);
+        Assert.assertArrayEquals(
+                new String[]{"List<IParameter> asList();"},
+                actual);
+
     }
 
     @Test
