@@ -22,14 +22,14 @@ public class InterfaceFromString implements IInterface {
 
     @Override
     public List<String> imports() {
-        if (!interfaceStr.contains("import")) {
+        if (!interfaceStr.contains("import ")) {
             return Collections.emptyList();
         }
 
         List<String> imports = new ArrayList<>();
         int fromIndex = 0;
         int curImportIndex = 0;
-        while ((curImportIndex = interfaceStr.indexOf("import", fromIndex)) > 0) {
+        while ((curImportIndex = interfaceStr.indexOf("import ", fromIndex)) > 0) {
             int endIndex = interfaceStr.indexOf(';', curImportIndex) + 1;
             imports.add(
                     interfaceStr.substring(
