@@ -7,7 +7,7 @@ public interface IInterface {
 
     List<String> imports();
 
-    String head();
+    String name();
 
     List<String> methods();
 }

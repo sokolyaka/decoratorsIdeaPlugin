@@ -42,8 +42,13 @@ public class InterfaceFromString implements IInterface {
     }
 
     @Override
-    public String head() {
-        return null;
+    public String name() {
+        return
+                interfaceStr
+                        .substring(
+                                interfaceStr.indexOf("interface ") + "interface ".length(),
+                                interfaceStr.indexOf('{'))
+                        .trim();
     }
 
     @Override
