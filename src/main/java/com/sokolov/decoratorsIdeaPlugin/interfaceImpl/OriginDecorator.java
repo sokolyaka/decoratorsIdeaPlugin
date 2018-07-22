@@ -22,23 +22,22 @@ public class OriginDecorator implements IInterfaceImpl {
         StringBuilder sb = new StringBuilder();
         sb.append("package ")
                 .append(packageDef)
-                .append(";\n\n");
+                .append(";");
         for (String importDef : iInterface.imports()) {
-            sb.append(importDef).append("\n");
+            sb.append(importDef);
         }
-        sb.append("\npublic class ")
+        sb.append("public class ")
                 .append(name)
                 .append(" implements ")
                 .append(iInterface.name())
-                .append(" {\n\n")
-                .append("private final ")
+                .append("{private final ")
                 .append(iInterface.name())
-                .append(" origin;\n\n")
+                .append(" origin;")
                 .append("public ")
                 .append(name)
                 .append("(")
                 .append(iInterface.name())
-                .append(" origin){\nthis.origin = origin;\n}\n\n");
+                .append(" origin){this.origin = origin;}");
 
         for (String method : iInterface.methods()) {
             sb.append(
@@ -46,11 +45,10 @@ public class OriginDecorator implements IInterfaceImpl {
                             new OverrideMethod(
                                     new PublicMethod(
                                             new MethodFromString(method))))
-                            .implementation())
-                    .append("\n");
+                            .implementation());
         }
 
-        sb.append("}\n");
+        sb.append("}");
 
         return sb.toString();
     }
