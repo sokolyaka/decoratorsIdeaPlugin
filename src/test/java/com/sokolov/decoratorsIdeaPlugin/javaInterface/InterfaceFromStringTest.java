@@ -70,6 +70,5 @@ public class InterfaceFromStringTest {
         Assert.assertEquals(
                 "package com.sokolov.decoratorsIdeaPlugin.method.parameter;",
                 actual);
-
     }
 }
