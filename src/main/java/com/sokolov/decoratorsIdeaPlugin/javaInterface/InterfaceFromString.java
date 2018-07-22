@@ -14,7 +14,10 @@ public class InterfaceFromString implements IInterface {
 
     @Override
     public String packageDef() {
-        return null;
+        return
+                interfaceStr.substring(
+                        interfaceStr.indexOf("package"),
+                        interfaceStr.indexOf(';') + 1);
     }
 
     @Override
