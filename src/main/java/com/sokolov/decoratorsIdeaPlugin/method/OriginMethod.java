@@ -1,5 +1,8 @@
 package com.sokolov.decoratorsIdeaPlugin.method;
 
+import com.sokolov.decoratorsIdeaPlugin.method.parameter.IParameter;
+import com.sokolov.decoratorsIdeaPlugin.method.parameter.ListOfParametersFromString;
+
 import java.util.List;
 
 public class OriginMethod implements IMethod {

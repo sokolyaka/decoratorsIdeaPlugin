@@ -1,9 +1,8 @@
 package com.sokolov.decoratorsIdeaPlugin.method;
 
+import com.sokolov.decoratorsIdeaPlugin.method.parameter.ParameterFromString;
 import org.junit.Assert;
 import org.junit.Test;
-
-import static org.junit.Assert.*;
 
 public class ParameterFromStringTest {
 
