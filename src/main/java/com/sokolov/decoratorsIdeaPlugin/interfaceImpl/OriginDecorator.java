@@ -17,6 +17,12 @@ public class OriginDecorator implements IInterfaceImpl {
         this.iInterface = iInterface;
     }
 
+    public OriginDecorator(String name, IInterface iInterface) {
+        this.packageDef = iInterface.packageDef();
+        this.name = name;
+        this.iInterface = iInterface;
+    }
+
     @Override
     public String asString() {
         StringBuilder sb = new StringBuilder();
