@@ -1,14 +1,16 @@
 package com.sokolov.decoratorsIdeaPlugin.field;
 
 public class FieldFromString implements IField {
-    private final String fieldStr;
+    private final String type;
+    private final String name;
 
-    public FieldFromString(String fieldStr) {
-        this.fieldStr = fieldStr;
+    public FieldFromString(String type, String name) {
+        this.type = type;
+        this.name = name;
     }
 
     @Override
     public String asString() {
-        return fieldStr;
+        return type + " " + name + ";";
     }
 }
