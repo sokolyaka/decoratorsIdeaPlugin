@@ -1,6 +1,6 @@
-package com.sokolov.lang.java.interfaceImpl;
+package com.sokolov.lang.java.decorator;
 
-public class AsyncDecorator implements IInterfaceImpl {
+public class AsyncDecorator implements IDecorator {
     private final OriginDecorator origin;
 
     public AsyncDecorator(OriginDecorator origin) {

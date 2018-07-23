@@ -1,4 +1,4 @@
-package com.sokolov.lang.java.interfaceImpl;
+package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 import org.junit.Assert;

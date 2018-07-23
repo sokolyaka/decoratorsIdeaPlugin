@@ -1,4 +1,4 @@
-package com.sokolov.lang.java.interfaceImpl;
+package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.method.MethodFromString;
@@ -6,7 +6,7 @@ import com.sokolov.lang.java.method.OriginMethod;
 import com.sokolov.lang.java.method.OverrideMethod;
 import com.sokolov.lang.java.method.PublicMethod;
 
-public class OriginDecorator implements IInterfaceImpl {
+public class OriginDecorator implements IDecorator {
     private final String packageDef;
     private final String name;
     private final IInterface iInterface;

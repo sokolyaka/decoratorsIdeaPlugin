@@ -8,9 +8,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.util.IncorrectOperationException;
-import com.sokolov.lang.java.interfaceImpl.AsyncDecorator;
-import com.sokolov.lang.java.interfaceImpl.IInterfaceImpl;
-import com.sokolov.lang.java.interfaceImpl.OriginDecorator;
+import com.sokolov.lang.java.decorator.AsyncDecorator;
+import com.sokolov.lang.java.decorator.IDecorator;
+import com.sokolov.lang.java.decorator.OriginDecorator;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 
@@ -46,7 +46,7 @@ public class AsyncDecoratorAction extends BaseIntentionAction {
 
         IInterface interfaceStr = new InterfaceFromString(document.getText());
         String name = "Async" + interfaceStr.name().substring(1);
-        IInterfaceImpl asyncDecorator =
+        IDecorator asyncDecorator =
                 new AsyncDecorator(
                         new OriginDecorator(
                                 name,
