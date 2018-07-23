@@ -1,6 +1,6 @@
 package com.sokolov.decoratorsIdeaPlugin.interfaceImpl;
 
-import com.sokolov.decoratorsIdeaPlugin.javaInterface.InterfaceFromString;
+import com.sokolov.decoratorsIdeaPlugin.interfaceDef.InterfaceFromString;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -11,8 +11,8 @@ import com.intellij.util.IncorrectOperationException;
 import com.sokolov.decoratorsIdeaPlugin.interfaceImpl.AsyncDecorator;
 import com.sokolov.decoratorsIdeaPlugin.interfaceImpl.IInterfaceImpl;
 import com.sokolov.decoratorsIdeaPlugin.interfaceImpl.OriginDecorator;
-import com.sokolov.decoratorsIdeaPlugin.javaInterface.IInterface;
-import com.sokolov.decoratorsIdeaPlugin.javaInterface.InterfaceFromString;
+import com.sokolov.decoratorsIdeaPlugin.interfaceDef.IInterface;
+import com.sokolov.decoratorsIdeaPlugin.interfaceDef.InterfaceFromString;
 
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;

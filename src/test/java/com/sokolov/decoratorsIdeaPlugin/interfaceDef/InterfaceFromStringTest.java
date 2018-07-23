@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.javaInterface;
+package com.sokolov.decoratorsIdeaPlugin.interfaceDef;
 
 import org.junit.Assert;
 import org.junit.Test;

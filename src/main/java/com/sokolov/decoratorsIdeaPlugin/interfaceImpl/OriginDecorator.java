@@ -1,6 +1,6 @@
 package com.sokolov.decoratorsIdeaPlugin.interfaceImpl;
 
-import com.sokolov.decoratorsIdeaPlugin.javaInterface.IInterface;
+import com.sokolov.decoratorsIdeaPlugin.interfaceDef.IInterface;
 import com.sokolov.decoratorsIdeaPlugin.method.MethodFromString;
 import com.sokolov.decoratorsIdeaPlugin.method.OriginMethod;
 import com.sokolov.decoratorsIdeaPlugin.method.OverrideMethod;

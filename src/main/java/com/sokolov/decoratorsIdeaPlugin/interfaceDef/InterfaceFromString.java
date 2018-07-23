@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.javaInterface;
+package com.sokolov.decoratorsIdeaPlugin.interfaceDef;
 
 import java.util.ArrayList;
 import java.util.Collections;
