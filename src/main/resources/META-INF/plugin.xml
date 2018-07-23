@@ -16,9 +16,11 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
+        <intentionAction>
+            <className>com.sokolov.decoratorsIdeaPlugin.action.AsyncDecoratorAction</className>
+        </intentionAction>
     </extensions>
 
     <actions>
-        <!-- Add your actions here -->
-    </actions>
-</idea-plugin>
+
+    </actions></idea-plugin>
