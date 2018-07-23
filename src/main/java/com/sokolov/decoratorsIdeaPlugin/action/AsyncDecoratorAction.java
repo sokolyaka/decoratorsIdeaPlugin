@@ -11,6 +11,7 @@ import com.intellij.util.IncorrectOperationException;
 import com.sokolov.lang.java.decorator.AsyncDecorator;
 import com.sokolov.lang.java.decorator.IDecorator;
 import com.sokolov.lang.java.decorator.OriginDecorator;
+import com.sokolov.lang.java.decorator.ToStringDecorator;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 
@@ -60,7 +61,7 @@ public class AsyncDecoratorAction extends BaseIntentionAction {
                                 .createFileFromText(
                                         name + ".java",
                                         JavaFileType.INSTANCE,
-                                        asyncDecorator.asString()));
+                                        new ToStringDecorator(asyncDecorator).asString()));
     }
 
     @Override

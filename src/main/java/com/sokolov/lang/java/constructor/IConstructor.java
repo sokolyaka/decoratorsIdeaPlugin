@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IConstructor {
 
+    String name();
+
     List<IParameter> params();
 
     String accessLevel();

@@ -17,18 +17,19 @@ public class AsyncDecoratorTest {
                         "public NewName(IListOfParameters origin,ExecutorService executorService){" +
                         "this.origin = origin;" +
                         "this.executorService = executorService;}" +
-                        "@Override public void asList(){executorService.execute(() -> origin.asList());}}",
-                new AsyncDecorator(
-                        new OriginDecorator(
-                                "com.sokolov.lang.java.method.parameter",
-                                "NewName",
-                                new InterfaceFromString(
-                                        "package com.sokolov.lang.java.method.parameter;\n" +
-                                                "\n" +
-                                                "public interface IListOfParameters {\n" +
-                                                "\n" +
-                                                "    void asList();\n" +
-                                                "}\n")))
+                        "@Override public void asList(){executorService.execute(() -> {origin.asList();})};}",
+                new ToStringDecorator(
+                        new AsyncDecorator(
+                                new OriginDecorator(
+                                        "com.sokolov.lang.java.method.parameter",
+                                        "NewName",
+                                        new InterfaceFromString(
+                                                "package com.sokolov.lang.java.method.parameter;\n" +
+                                                        "\n" +
+                                                        "public interface IListOfParameters {\n" +
+                                                        "\n" +
+                                                        "    void asList();\n" +
+                                                        "}\n"))))
                         .asString());
     }
 }

@@ -18,18 +18,19 @@ public class OriginDecoratorTest {
                         "}" +
                         "@Override public List<IParameter> asList(){return origin.asList();}" +
                         "}",
-                new OriginDecorator(
-                        "com.sokolov.lang.java.method.parameter",
-                        "NewName",
-                        new InterfaceFromString(
-                                "package com.sokolov.lang.java.method.parameter;\n" +
-                                        "\n" +
-                                        "import java.util.List;\n" +
-                                        "\n" +
-                                        "public interface IListOfParameters {\n" +
-                                        "\n" +
-                                        "    List<IParameter> asList();\n" +
-                                        "}\n"))
+                new ToStringDecorator(
+                        new OriginDecorator(
+                                "com.sokolov.lang.java.method.parameter",
+                                "NewName",
+                                new InterfaceFromString(
+                                        "package com.sokolov.lang.java.method.parameter;\n" +
+                                                "\n" +
+                                                "import java.util.List;\n" +
+                                                "\n" +
+                                                "public interface IListOfParameters {\n" +
+                                                "\n" +
+                                                "    List<IParameter> asList();\n" +
+                                                "}\n")))
                         .asString());
 
     }

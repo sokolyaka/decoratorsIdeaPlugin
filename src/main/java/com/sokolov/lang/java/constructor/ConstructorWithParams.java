@@ -5,12 +5,19 @@ import com.sokolov.lang.java.parameter.IParameter;
 import java.util.List;
 
 public class ConstructorWithParams implements IConstructor {
+    private final String name;
     private final List<IParameter> params;
     private final String accessLevel;
 
-    public ConstructorWithParams(List<IParameter> params, String accessLevel) {
+    public ConstructorWithParams(String name, List<IParameter> params, String accessLevel) {
+        this.name = name;
         this.params = params;
         this.accessLevel = accessLevel;
+    }
+
+    @Override
+    public String name() {
+        return name;
     }
 
     @Override

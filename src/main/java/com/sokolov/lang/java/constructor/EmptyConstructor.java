@@ -13,6 +13,11 @@ public class EmptyConstructor implements IConstructor {
     }
 
     @Override
+    public String name() {
+        return null;
+    }
+
+    @Override
     public List<IParameter> params() {
         return Collections.emptyList();
     }
