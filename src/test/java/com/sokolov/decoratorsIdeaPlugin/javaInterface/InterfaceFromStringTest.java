@@ -120,7 +120,7 @@ public class InterfaceFromStringTest {
                                 "}\n")
                         .packageDef();
         Assert.assertEquals(
-                "com.sokolov.decoratorsIdeaPlugin.method.parameter;",
+                "com.sokolov.decoratorsIdeaPlugin.method.parameter",
                 actual);
     }
 }
