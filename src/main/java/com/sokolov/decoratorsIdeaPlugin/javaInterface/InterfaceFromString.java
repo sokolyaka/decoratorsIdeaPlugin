@@ -16,7 +16,7 @@ public class InterfaceFromString implements IInterface {
     public String packageDef() {
         return
                 interfaceStr.substring(
-                        interfaceStr.indexOf("package"),
+                        interfaceStr.indexOf("package ") + "package ".length(),
                         interfaceStr.indexOf(';') + 1);
     }
 
