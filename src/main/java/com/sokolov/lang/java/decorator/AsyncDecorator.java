@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class AsyncDecorator implements IDecorator {
-    private final OriginDecorator origin;
+    private final IDecorator origin;
 
-    public AsyncDecorator(OriginDecorator origin) {
+    public AsyncDecorator(IDecorator origin) {
         this.origin = origin;
     }
 

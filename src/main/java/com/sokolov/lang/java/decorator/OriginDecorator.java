@@ -2,7 +2,6 @@ package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.constructor.ConstructorWithParams;
 import com.sokolov.lang.java.constructor.IConstructor;
-import com.sokolov.lang.java.constructor.ToStringConstructor;
 import com.sokolov.lang.java.field.FieldFromString;
 import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
