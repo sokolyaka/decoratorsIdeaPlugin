@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.method.parameter;
+package com.sokolov.decoratorsIdeaPlugin.parameter;
 
 import java.util.List;
 

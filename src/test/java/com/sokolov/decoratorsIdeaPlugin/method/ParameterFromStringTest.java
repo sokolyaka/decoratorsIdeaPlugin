@@ -1,6 +1,6 @@
 package com.sokolov.decoratorsIdeaPlugin.method;
 
-import com.sokolov.decoratorsIdeaPlugin.method.parameter.ParameterFromString;
+import com.sokolov.decoratorsIdeaPlugin.parameter.ParameterFromString;
 import org.junit.Assert;
 import org.junit.Test;
 

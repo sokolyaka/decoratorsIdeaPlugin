@@ -1,6 +1,6 @@
 package com.sokolov.decoratorsIdeaPlugin.constructor;
 
-import com.sokolov.decoratorsIdeaPlugin.method.parameter.IParameter;
+import com.sokolov.decoratorsIdeaPlugin.parameter.IParameter;
 
 import java.util.List;
 

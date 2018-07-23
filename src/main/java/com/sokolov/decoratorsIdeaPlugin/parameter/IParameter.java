@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.method.parameter;
+package com.sokolov.decoratorsIdeaPlugin.parameter;
 
 public interface IParameter {
     String type();

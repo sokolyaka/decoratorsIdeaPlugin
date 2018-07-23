@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.method.parameter;
+package com.sokolov.decoratorsIdeaPlugin.parameter;
 
 public class ParameterFromString implements IParameter {
     private final String parameter;
