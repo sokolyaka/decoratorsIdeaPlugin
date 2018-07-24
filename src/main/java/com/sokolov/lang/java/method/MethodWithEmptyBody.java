@@ -1,5 +1,8 @@
 package com.sokolov.lang.java.method;
 
+import com.sokolov.lang.java.parameter.IParameter;
+
+import java.util.List;
 import java.util.Map;
 
 public class MethodWithEmptyBody implements IMethod {
@@ -9,6 +12,11 @@ public class MethodWithEmptyBody implements IMethod {
     public MethodWithEmptyBody(IMethod origin, Map<String, String> defaultReturnValues) {
         this.origin = origin;
         this.defaultReturnValues = defaultReturnValues;
+    }
+
+    @Override
+    public List<IParameter> parameters() {
+        return origin.parameters();
     }
 
     @Override

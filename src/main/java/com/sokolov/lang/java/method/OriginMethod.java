@@ -32,6 +32,11 @@ public class OriginMethod implements IMethod {
     }
 
     @Override
+    public List<IParameter> parameters() {
+        return origin.parameters();
+    }
+
+    @Override
     public String implementation() {
         String implementation = origin.implementation().trim();
         if (implementation.charAt(implementation.length() - 1) != ';') {

@@ -1,5 +1,9 @@
 package com.sokolov.lang.java.method;
 
+import com.sokolov.lang.java.parameter.IParameter;
+
+import java.util.List;
+
 public class SyncMethod implements IMethod {
 
     private final IMethod origin;
@@ -8,6 +12,11 @@ public class SyncMethod implements IMethod {
     public SyncMethod(IMethod origin, String syncObjectFieldName) {
         this.origin = origin;
         this.syncObjectFieldName = syncObjectFieldName;
+    }
+
+    @Override
+    public List<IParameter> parameters() {
+        return origin.parameters();
     }
 
     @Override
