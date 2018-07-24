@@ -1,18 +1,13 @@
 <idea-plugin>
     <id>com.sokolov.decoratorsIdeaPlugin</id>
-    <name>Decorator</name>
-    <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
+    <name>Decorators set</name>
+    <vendor email="sokolov.ob@gmail.com" url="https://github.com/sokolyaka">Sokolov Oleh</vendor>
 
     <description><![CDATA[
-    Enter short description for your plugin here.<br>
-    <em>most HTML tags may be used</em>
+    Set of <a href="https://en.wikipedia.org/wiki/Decorator_pattern">the Decorator pattern</a> implementations.
     ]]></description>
 
-    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-         on how to target different products -->
-    <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
-    -->
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
@@ -26,4 +21,5 @@
 
     <actions>
 
-    </actions></idea-plugin>
+    </actions>
+</idea-plugin>

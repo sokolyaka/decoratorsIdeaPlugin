@@ -4,7 +4,7 @@ plugins {
 }
 
 group 'com.sokolov'
-version '1.0-SNAPSHOT'
+version '0.1'
 
 sourceCompatibility = 1.8
 
@@ -18,9 +18,14 @@ dependencies {
 
 intellij {
     version '2018.1.6'
+    pluginName 'Decorators'
+    updateSinceUntilBuild false
 }
 patchPluginXml {
     changeNotes """
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>"""
+      First alpha version"""
+}
+publishPlugin {
+    username "intellijPublishUsername"
+    password "intellijPublishPassword"
 }
