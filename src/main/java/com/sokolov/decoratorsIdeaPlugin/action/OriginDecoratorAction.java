@@ -22,14 +22,14 @@ public class OriginDecoratorAction extends BaseIntentionAction {
     @NotNull
     @Override
     public String getText() {
-        return "Origin";
+        return "Decorator - Origin";
     }
 
     @Nls
     @NotNull
     @Override
     public String getFamilyName() {
-        return "Implement interface";
+        return "Generate decorator";
     }
 
     @Override

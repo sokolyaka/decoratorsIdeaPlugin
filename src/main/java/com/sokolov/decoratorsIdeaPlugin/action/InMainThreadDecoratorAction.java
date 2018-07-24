@@ -8,8 +8,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.util.IncorrectOperationException;
-import com.sokolov.lang.java.decorator.AsyncDecorator;
 import com.sokolov.lang.java.decorator.IDecorator;
+import com.sokolov.lang.java.decorator.InMainThreadDecorator;
 import com.sokolov.lang.java.decorator.OriginDecorator;
 import com.sokolov.lang.java.decorator.ToStringDecorator;
 import com.sokolov.lang.java.interfaceDef.IInterface;
@@ -18,13 +18,13 @@ import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
-public class AsyncDecoratorAction extends BaseIntentionAction {
+public class InMainThreadDecoratorAction extends BaseIntentionAction {
 
     @Nls
     @NotNull
     @Override
     public String getText() {
-        return "Decorator - Async";
+        return "Decorator - InMainThread";
     }
 
     @Nls
@@ -46,9 +46,9 @@ public class AsyncDecoratorAction extends BaseIntentionAction {
         final Document document = editor.getDocument();
 
         IInterface interfaceStr = new InterfaceFromString(document.getText());
-        String name = "Async" + interfaceStr.name().substring(1);
+        String name = "InMainThread" + interfaceStr.name().substring(1);
         IDecorator asyncDecorator =
-                new AsyncDecorator(
+                new InMainThreadDecorator(
                         new OriginDecorator(
                                 name,
                                 interfaceStr));
