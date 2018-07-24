@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.sokolov.decoratorsIdeaPlugin</id>
-    <name>Plugin display name here</name>
+    <name>Decorator</name>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
     <description><![CDATA[
@@ -18,6 +18,9 @@
         <!-- Add your extensions here -->
         <intentionAction>
             <className>com.sokolov.decoratorsIdeaPlugin.action.AsyncDecoratorAction</className>
+        </intentionAction>
+        <intentionAction>
+            <className>com.sokolov.decoratorsIdeaPlugin.action.OriginDecoratorAction</className>
         </intentionAction>
     </extensions>
 
