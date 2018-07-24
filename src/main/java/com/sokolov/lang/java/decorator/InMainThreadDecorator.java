@@ -10,8 +10,6 @@ import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
 import com.sokolov.lang.java.method.IMethod;
 import com.sokolov.lang.java.method.InMainThreadMethod;
-import com.sokolov.lang.java.parameter.IParameter;
-import com.sokolov.lang.java.parameter.Parameter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +30,7 @@ public class InMainThreadDecorator implements IDecorator {
     public List<String> imports() {
         ArrayList<String> imports = new ArrayList<>(origin.imports());
         imports.add("import android.os.Handler;");
+        imports.add("import android.os.Looper;");
         return imports;
     }
 
@@ -50,13 +49,11 @@ public class InMainThreadDecorator implements IDecorator {
     @Override
     public IConstructor constructor() {
         IConstructor oConstructor = origin.constructor();
-        List<IParameter> parameters = new ArrayList<>(oConstructor.params());
-        parameters.add(new Parameter("Handler", "handler"));
 
         List<IFieldInitialization> initializations = new ArrayList<>(oConstructor.initializations());
-        initializations.add(new FieldInitialization("handler", "handler"));
+        initializations.add(new FieldInitialization("handler", "new Handler(Looper.getMainLooper())"));
 
-        return new ConstructorWithParams(oConstructor.name(), parameters, oConstructor.accessLevel(), initializations);
+        return new ConstructorWithParams(oConstructor.name(), oConstructor.params(), oConstructor.accessLevel(), initializations);
     }
 
     @Override
