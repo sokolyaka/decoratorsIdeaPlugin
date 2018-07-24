@@ -12,6 +12,7 @@ import com.intellij.util.IncorrectOperationException;
 import com.sokolov.lang.java.decorator.*;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
+import com.sokolov.lang.java.method.android.inMainThread.Java8InMainThreadMethodBuilder;
 import com.sokolov.lang.java.method.java.async.Java8AsyncMethodBuilder;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
@@ -95,7 +96,8 @@ public class DecoratorDialogAction extends BaseIntentionAction {
                                 new OriginDecorator(
                                         packageField.getText(),
                                         classNameField.getText(),
-                                        interfaceStr));
+                                        interfaceStr),
+                                new Java8InMainThreadMethodBuilder());
             } else if (cbOrigin.isSelected()) {
                 decorator =
                         new OriginDecorator(

@@ -5,10 +5,10 @@ import com.sokolov.lang.java.parameter.IParameter;
 
 import java.util.List;
 
-public class InMainThreadMethod implements IMethod {
+public class Java8InMainThreadMethod implements IMethod {
     private final IMethod origin;
 
-    public InMainThreadMethod(IMethod origin) {
+    public Java8InMainThreadMethod(IMethod origin) {
         this.origin = origin;
     }
 

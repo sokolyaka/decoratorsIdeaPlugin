@@ -9,16 +9,18 @@ import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
 import com.sokolov.lang.java.method.IMethod;
-import com.sokolov.lang.java.method.android.inMainThread.InMainThreadMethod;
+import com.sokolov.lang.java.method.android.inMainThread.IInMainThreadMethodBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InMainThreadDecorator implements IDecorator {
     private final IDecorator origin;
+    private final IInMainThreadMethodBuilder inMainThreadMethodBuilder;
 
-    public InMainThreadDecorator(IDecorator origin) {
+    public InMainThreadDecorator(IDecorator origin, IInMainThreadMethodBuilder inMainThreadMethodBuilder) {
         this.origin = origin;
+        this.inMainThreadMethodBuilder = inMainThreadMethodBuilder;
     }
 
     @Override
@@ -60,7 +62,10 @@ public class InMainThreadDecorator implements IDecorator {
     public List<IMethod> methods() {
         List<IMethod> result = new ArrayList<>();
         for (IMethod method : origin.methods()) {
-            result.add(new InMainThreadMethod(method));
+            result.add(
+                    inMainThreadMethodBuilder
+                            .setOrigin(method)
+                            .build());
         }
         return result;
     }
