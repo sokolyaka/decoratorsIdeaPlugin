@@ -27,6 +27,11 @@ public class ToStringConstructor implements IConstructor {
     }
 
     @Override
+    public List<IFieldInitialization> initializations() {
+        return origin.initializations();
+    }
+
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         sb.append(accessLevel())
@@ -45,12 +50,12 @@ public class ToStringConstructor implements IConstructor {
             }
         }
         sb.append("){");
-        for (IParameter parameter : params) {
+        for (IFieldInitialization fieldInitialization : initializations()) {
             sb
                     .append("this.")
-                    .append(parameter.name())
+                    .append(fieldInitialization.name())
                     .append(" = ")
-                    .append(parameter.name())
+                    .append(fieldInitialization.value())
                     .append(";");
         }
 

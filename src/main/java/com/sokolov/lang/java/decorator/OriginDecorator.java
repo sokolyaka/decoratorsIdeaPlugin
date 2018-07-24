@@ -1,6 +1,7 @@
 package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.constructor.ConstructorWithParams;
+import com.sokolov.lang.java.constructor.FieldInitialization;
 import com.sokolov.lang.java.constructor.IConstructor;
 import com.sokolov.lang.java.field.FieldFromString;
 import com.sokolov.lang.java.field.FinalField;
@@ -60,7 +61,11 @@ public class OriginDecorator implements IDecorator {
                                 new Parameter(
                                         iInterface.name(),
                                         "origin")),
-                        "public");
+                        "public",
+                        Arrays.asList(
+                                new FieldInitialization(
+                                        "origin",
+                                        "origin")));
     }
 
     @Override

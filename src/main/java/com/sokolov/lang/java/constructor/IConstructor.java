@@ -11,4 +11,6 @@ public interface IConstructor {
     List<IParameter> params();
 
     String accessLevel();
+
+    List<IFieldInitialization> initializations();
 }

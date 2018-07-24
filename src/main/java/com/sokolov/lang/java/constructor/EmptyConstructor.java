@@ -26,4 +26,9 @@ public class EmptyConstructor implements IConstructor {
     public String accessLevel() {
         return accessLevel;
     }
+
+    @Override
+    public List<IFieldInitialization> initializations() {
+        return Collections.emptyList();
+    }
 }

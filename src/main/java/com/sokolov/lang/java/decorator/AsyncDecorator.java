@@ -1,7 +1,9 @@
 package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.constructor.ConstructorWithParams;
+import com.sokolov.lang.java.constructor.FieldInitialization;
 import com.sokolov.lang.java.constructor.IConstructor;
+import com.sokolov.lang.java.constructor.IFieldInitialization;
 import com.sokolov.lang.java.field.FieldFromString;
 import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
@@ -50,7 +52,11 @@ public class AsyncDecorator implements IDecorator {
         IConstructor oConstructor = origin.constructor();
         List<IParameter> parameters = new ArrayList<>(oConstructor.params());
         parameters.add(new Parameter("ExecutorService", "executorService"));
-        return new ConstructorWithParams(oConstructor.name(), parameters, oConstructor.accessLevel());
+
+        List<IFieldInitialization> initializations = new ArrayList<>(oConstructor.initializations());
+        initializations.add(new FieldInitialization("executorService", "executorService"));
+
+        return new ConstructorWithParams(oConstructor.name(), parameters, oConstructor.accessLevel(), initializations);
     }
 
     @Override

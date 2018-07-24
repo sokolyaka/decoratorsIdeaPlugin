@@ -8,11 +8,13 @@ public class ConstructorWithParams implements IConstructor {
     private final String name;
     private final List<IParameter> params;
     private final String accessLevel;
+    private final List<IFieldInitialization> initializations;
 
-    public ConstructorWithParams(String name, List<IParameter> params, String accessLevel) {
+    public ConstructorWithParams(String name, List<IParameter> params, String accessLevel, List<IFieldInitialization> initializations) {
         this.name = name;
         this.params = params;
         this.accessLevel = accessLevel;
+        this.initializations = initializations;
     }
 
     @Override
@@ -28,5 +30,10 @@ public class ConstructorWithParams implements IConstructor {
     @Override
     public String accessLevel() {
         return accessLevel;
+    }
+
+    @Override
+    public List<IFieldInitialization> initializations() {
+        return initializations;
     }
 }
