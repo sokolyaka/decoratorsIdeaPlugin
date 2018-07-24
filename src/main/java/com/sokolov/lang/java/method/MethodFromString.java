@@ -13,6 +13,18 @@ public class MethodFromString implements IMethod {
     }
 
     @Override
+    public String name() {
+        String methodDefWithoutParams =
+                methodDeclaration.substring(
+                        0,
+                        methodDeclaration.indexOf('('))
+                        .trim();
+        return
+                methodDefWithoutParams.substring(
+                        methodDefWithoutParams.lastIndexOf(" ") + 1);
+    }
+
+    @Override
     public List<IParameter> parameters() {
         String params = methodDeclaration.substring(
                 methodDeclaration.indexOf('(') + 1,

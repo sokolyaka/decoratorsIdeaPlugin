@@ -15,6 +15,11 @@ public class SyncMethod implements IMethod {
     }
 
     @Override
+    public String name() {
+        return origin.name();
+    }
+
+    @Override
     public List<IParameter> parameters() {
         return origin.parameters();
     }

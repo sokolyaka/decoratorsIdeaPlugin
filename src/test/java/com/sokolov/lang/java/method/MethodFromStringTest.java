@@ -6,8 +6,6 @@ import org.junit.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.*;
-
 public class MethodFromStringTest {
 
     @Test
@@ -16,5 +14,23 @@ public class MethodFromStringTest {
         IParameter parameter0 = parameters.get(0);
         Assert.assertEquals("s", parameter0.name());
         Assert.assertEquals("String", parameter0.type());
+    }
+
+    @Test
+    public void name() {
+        Assert.assertEquals(
+                "implementation",
+                new MethodFromString(
+                        "Map<String, String> implementation(String s);")
+                        .name());
+    }
+
+    @Test
+    public void nameWithExtraSpaces() {
+        Assert.assertEquals(
+                "implementation",
+                new MethodFromString(
+                        "Map<String, String>   implementation (String s);")
+                        .name());
     }
 }

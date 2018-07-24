@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IMethod {
 
+    String name();
+
     List<IParameter> parameters();
 
     String implementation();

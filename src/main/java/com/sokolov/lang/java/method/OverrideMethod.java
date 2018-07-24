@@ -12,6 +12,11 @@ public class OverrideMethod implements IMethod {
     }
 
     @Override
+    public String name() {
+        return origin.name();
+    }
+
+    @Override
     public List<IParameter> parameters() {
         return origin.parameters();
     }
