@@ -1,6 +1,5 @@
 package com.sokolov.lang.java.method.async;
 
-import com.sokolov.lang.java.method.Java8AsyncMethod;
 import com.sokolov.lang.java.method.IMethod;
 
 public class Java8AsyncMethodBuilder implements IAsyncMethodBuilder {
