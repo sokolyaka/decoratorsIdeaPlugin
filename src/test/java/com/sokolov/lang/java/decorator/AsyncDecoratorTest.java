@@ -1,6 +1,7 @@
 package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
+import com.sokolov.lang.java.method.async.Java8AsyncMethodBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -29,7 +30,8 @@ public class AsyncDecoratorTest {
                                                         "public interface IListOfParameters {\n" +
                                                         "\n" +
                                                         "    void asList();\n" +
-                                                        "}\n"))))
+                                                        "}\n")),
+                                new Java8AsyncMethodBuilder()))
                         .asString());
     }
 }

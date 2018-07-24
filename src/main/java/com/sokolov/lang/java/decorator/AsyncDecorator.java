@@ -8,8 +8,8 @@ import com.sokolov.lang.java.field.FieldFromString;
 import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
-import com.sokolov.lang.java.method.AsyncMethod;
 import com.sokolov.lang.java.method.IMethod;
+import com.sokolov.lang.java.method.async.IAsyncMethodBuilder;
 import com.sokolov.lang.java.parameter.IParameter;
 import com.sokolov.lang.java.parameter.Parameter;
 
@@ -18,9 +18,11 @@ import java.util.List;
 
 public class AsyncDecorator implements IDecorator {
     private final IDecorator origin;
+    private final IAsyncMethodBuilder asyncMethodBuilder;
 
-    public AsyncDecorator(IDecorator origin) {
+    public AsyncDecorator(IDecorator origin, IAsyncMethodBuilder asyncMethodBuilder) {
         this.origin = origin;
+        this.asyncMethodBuilder = asyncMethodBuilder;
     }
 
     @Override
@@ -63,7 +65,10 @@ public class AsyncDecorator implements IDecorator {
     public List<IMethod> methods() {
         List<IMethod> result = new ArrayList<>();
         for (IMethod method : origin.methods()) {
-            result.add(new AsyncMethod(method));
+            result.add(
+                    asyncMethodBuilder
+                            .setOrigin(method)
+                            .build());
         }
         return result;
     }

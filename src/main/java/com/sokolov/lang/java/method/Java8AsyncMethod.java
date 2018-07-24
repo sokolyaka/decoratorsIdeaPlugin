@@ -4,10 +4,10 @@ import com.sokolov.lang.java.parameter.IParameter;
 
 import java.util.List;
 
-public class AsyncMethod implements IMethod {
+public class Java8AsyncMethod implements IMethod {
     private final IMethod origin;
 
-    public AsyncMethod(IMethod origin) {
+    public Java8AsyncMethod(IMethod origin) {
         this.origin = origin;
     }
 

@@ -9,23 +9,14 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.util.IncorrectOperationException;
-import com.sokolov.lang.java.decorator.AsyncDecorator;
-import com.sokolov.lang.java.decorator.IDecorator;
-import com.sokolov.lang.java.decorator.InMainThreadDecorator;
-import com.sokolov.lang.java.decorator.OriginDecorator;
-import com.sokolov.lang.java.decorator.ToStringDecorator;
+import com.sokolov.lang.java.decorator.*;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
-
+import com.sokolov.lang.java.method.async.Java8AsyncMethodBuilder;
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.BoxLayout;
-import javax.swing.JCheckBox;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
+import javax.swing.*;
 
 public class DecoratorDialogAction extends BaseIntentionAction {
 
@@ -96,7 +87,8 @@ public class DecoratorDialogAction extends BaseIntentionAction {
                                 new OriginDecorator(
                                         packageField.getText(),
                                         classNameField.getText(),
-                                        interfaceStr));
+                                        interfaceStr),
+                                new Java8AsyncMethodBuilder());
             } else if (cbInMainThread.isSelected()) {
                 decorator =
                         new InMainThreadDecorator(
