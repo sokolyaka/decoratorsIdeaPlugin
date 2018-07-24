@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.action;
+package com.sokolov.decoratorsIdeaPlugin.dialog;
 
 import com.intellij.codeInsight.intention.impl.BaseIntentionAction;
 import com.intellij.ide.highlighter.JavaFileType;

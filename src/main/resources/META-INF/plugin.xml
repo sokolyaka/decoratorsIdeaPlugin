@@ -12,7 +12,7 @@
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
         <intentionAction>
-            <className>com.sokolov.decoratorsIdeaPlugin.action.DecoratorDialogAction</className>
+            <className>com.sokolov.decoratorsIdeaPlugin.dialog.DecoratorDialogAction</className>
         </intentionAction>
     </extensions>
 
