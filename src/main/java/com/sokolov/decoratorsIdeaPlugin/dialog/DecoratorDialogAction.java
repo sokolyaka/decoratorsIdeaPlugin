@@ -3,14 +3,13 @@ package com.sokolov.decoratorsIdeaPlugin.dialog;
 import com.intellij.codeInsight.intention.impl.BaseIntentionAction;
 import com.intellij.ide.highlighter.JavaFileType;
 import com.intellij.openapi.application.ApplicationManager;
-import com.intellij.openapi.editor.Document;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
+import com.intellij.psi.PsiJavaFile;
 import com.intellij.util.IncorrectOperationException;
 import com.sokolov.lang.java.decorator.*;
-import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 import com.sokolov.lang.java.method.android.inMainThread.Java8InMainThreadMethodBuilder;
 import com.sokolov.lang.java.method.java.async.Java8AsyncMethodBuilder;
@@ -44,21 +43,18 @@ public class DecoratorDialogAction extends BaseIntentionAction {
     @Override
     public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
         //Access document, caret, and selection
-        final Document document = editor.getDocument();
-
-        IInterface interfaceStr = new InterfaceFromString(document.getText());
-
+        PsiJavaFile javaFile = (PsiJavaFile) file;
 
         JPanel classNamePanel = new JPanel();
-        classNamePanel.add(new JLabel("Create class:"));
+        classNamePanel.add(new JLabel("Class name:"));
         JTextField classNameField = new JTextField(25);
-        classNameField.setText(interfaceStr.name());
+        classNameField.setText(javaFile.getName().replace(".java", ""));
         classNamePanel.add(classNameField);
 
         JPanel packagePanel = new JPanel();
         packagePanel.add(new JLabel("Destination package:"));
         JTextField packageField = new JTextField(25);
-        packageField.setText(interfaceStr.packageDef());
+        packageField.setText(javaFile.getPackageName());
         packagePanel.add(packageField);
 
 
@@ -71,6 +67,10 @@ public class DecoratorDialogAction extends BaseIntentionAction {
         checkBoxPanel.add(cbAsync);
         JCheckBox cbInMainThread = new JCheckBox("InMainThread");
         checkBoxPanel.add(cbInMainThread);
+        JCheckBox cbSync = new JCheckBox("Sync");
+        checkBoxPanel.add(cbSync);
+        JCheckBox cbAndroidLoggable = new JCheckBox("AndroidLoggable");
+        checkBoxPanel.add(cbAndroidLoggable);
 
         JPanel myPanel = new JPanel();
         myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
@@ -81,48 +81,48 @@ public class DecoratorDialogAction extends BaseIntentionAction {
         int result = JOptionPane.showConfirmDialog(null, myPanel,
                 "Generate decorator", JOptionPane.OK_CANCEL_OPTION);
         if (result == JOptionPane.OK_OPTION) {
-            IDecorator decorator = null;
+            IDecorator decorator =
+                    new OriginDecorator(
+                            packageField.getText(),
+                            classNameField.getText(),
+                            new InterfaceFromString(
+                                    editor.getDocument().getText()));
             if (cbAsync.isSelected()) {
                 decorator =
                         new AsyncDecorator(
-                                new OriginDecorator(
-                                        packageField.getText(),
-                                        classNameField.getText(),
-                                        interfaceStr),
+                                decorator,
                                 new Java8AsyncMethodBuilder());
             } else if (cbInMainThread.isSelected()) {
                 decorator =
                         new InMainThreadDecorator(
-                                new OriginDecorator(
-                                        packageField.getText(),
-                                        classNameField.getText(),
-                                        interfaceStr),
+                                decorator,
                                 new Java8InMainThreadMethodBuilder());
-            } else if (cbOrigin.isSelected()) {
+            } else if (cbSync.isSelected()) {
                 decorator =
-                        new OriginDecorator(
-                                packageField.getText(),
-                                classNameField.getText(),
-                                interfaceStr);
+                        new SyncDecorator(
+                                decorator);
+            } else if (cbAndroidLoggable.isSelected()) {
+                decorator =
+                        new AndroidLoggableDecorator(
+                                decorator);
             }
-            if (decorator != null) {
-                IDecorator finalDecorator = decorator;
-                ApplicationManager
-                        .getApplication()
-                        .runWriteAction(() -> {
-                            file
-                                    .getContainingDirectory()
-                                    .add(
-                                            PsiFileFactory
-                                                    .getInstance(project)
-                                                    .createFileFromText(
-                                                            classNameField.getText() + ".java",
-                                                            JavaFileType.INSTANCE,
-                                                            new ToStringDecorator(
-                                                                    finalDecorator)
-                                                                    .asString()));
-                        });
-            }
+
+            IDecorator finalDecorator = decorator;
+            ApplicationManager
+                    .getApplication()
+                    .runWriteAction(() -> {
+                        file
+                                .getContainingDirectory()
+                                .add(
+                                        PsiFileFactory
+                                                .getInstance(project)
+                                                .createFileFromText(
+                                                        classNameField.getText() + ".java",
+                                                        JavaFileType.INSTANCE,
+                                                        new ToStringDecorator(
+                                                                finalDecorator)
+                                                                .asString()));
+                    });
         }
     }
 
