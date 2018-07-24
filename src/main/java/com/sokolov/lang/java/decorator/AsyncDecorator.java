@@ -9,7 +9,7 @@ import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
 import com.sokolov.lang.java.method.IMethod;
-import com.sokolov.lang.java.method.async.IAsyncMethodBuilder;
+import com.sokolov.lang.java.method.java.async.IAsyncMethodBuilder;
 import com.sokolov.lang.java.parameter.IParameter;
 import com.sokolov.lang.java.parameter.Parameter;
 

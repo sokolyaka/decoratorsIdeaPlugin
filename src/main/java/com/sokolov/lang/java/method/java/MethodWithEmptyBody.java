@@ -1,5 +1,6 @@
-package com.sokolov.lang.java.method;
+package com.sokolov.lang.java.method.java;
 
+import com.sokolov.lang.java.method.IMethod;
 import com.sokolov.lang.java.parameter.IParameter;
 
 import java.util.List;

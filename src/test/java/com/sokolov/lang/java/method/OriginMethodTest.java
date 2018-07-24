@@ -1,5 +1,9 @@
 package com.sokolov.lang.java.method;
 
+import com.sokolov.lang.java.method.java.MethodFromString;
+import com.sokolov.lang.java.method.java.OriginMethod;
+import com.sokolov.lang.java.method.java.OverrideMethod;
+import com.sokolov.lang.java.method.java.PublicMethod;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,5 +1,8 @@
 package com.sokolov.lang.java.method;
 
+import com.sokolov.lang.java.method.android.AndroidLoggableMethod;
+import com.sokolov.lang.java.method.java.MethodFromString;
+import com.sokolov.lang.java.method.java.OriginMethod;
 import org.junit.Assert;
 import org.junit.Test;
 

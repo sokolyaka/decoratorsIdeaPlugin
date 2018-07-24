@@ -1,8 +1,8 @@
-package com.sokolov.lang.java.method.async;
+package com.sokolov.lang.java.method.java.async;
 
 import com.sokolov.lang.java.method.IMethod;
 
-public class Java7AsyncMethodBuilder implements IAsyncMethodBuilder {
+public class Java8AsyncMethodBuilder implements IAsyncMethodBuilder {
     private IMethod origin;
 
     @Override
@@ -17,6 +17,6 @@ public class Java7AsyncMethodBuilder implements IAsyncMethodBuilder {
         if (origin == null) {
             throw new IllegalStateException("setOrigin() is required");
         }
-        return new Java7AsyncMethod(origin);
+        return new Java8AsyncMethod(origin);
     }
 }

@@ -1,5 +1,6 @@
 package com.sokolov.lang.java.method;
 
+import com.sokolov.lang.java.method.java.MethodFromString;
 import com.sokolov.lang.java.parameter.IParameter;
 import org.junit.Assert;
 import org.junit.Test;

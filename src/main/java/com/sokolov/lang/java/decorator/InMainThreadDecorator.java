@@ -9,7 +9,7 @@ import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
 import com.sokolov.lang.java.method.IMethod;
-import com.sokolov.lang.java.method.InMainThreadMethod;
+import com.sokolov.lang.java.method.android.inMainThread.InMainThreadMethod;
 
 import java.util.ArrayList;
 import java.util.List;

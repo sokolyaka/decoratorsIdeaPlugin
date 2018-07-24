@@ -1,6 +1,10 @@
 package com.sokolov.lang.java.method;
 
 import com.sokolov.lang.java.defaultReturnValue.DefaultReturnValuesProvider;
+import com.sokolov.lang.java.method.java.MethodFromString;
+import com.sokolov.lang.java.method.java.MethodWithEmptyBody;
+import com.sokolov.lang.java.method.java.OverrideMethod;
+import com.sokolov.lang.java.method.java.PublicMethod;
 import org.junit.Assert;
 import org.junit.Test;
 

@@ -1,14 +1,14 @@
-package com.sokolov.lang.java.method.async;
+package com.sokolov.lang.java.method.android.inMainThread;
 
 import com.sokolov.lang.java.method.IMethod;
 import com.sokolov.lang.java.parameter.IParameter;
 
 import java.util.List;
 
-public class Java7AsyncMethod implements IMethod {
+public class InMainThreadMethod implements IMethod {
     private final IMethod origin;
 
-    public Java7AsyncMethod(IMethod origin) {
+    public InMainThreadMethod(IMethod origin) {
         this.origin = origin;
     }
 
@@ -26,10 +26,10 @@ public class Java7AsyncMethod implements IMethod {
     public String implementation() {
         StringBuilder sb = new StringBuilder(origin.implementation());
         int startIndex = sb.indexOf("{") + 1;
-        sb.insert(startIndex, "executorService.execute(new Runnable(){@Override public void run(){");
+        sb.insert(startIndex, "handler.post(() -> {");
 
         int endIndex = sb.lastIndexOf("}");
-        sb.insert(endIndex, "}});");
+        sb.insert(endIndex, "});");
 
         return sb.toString();
     }

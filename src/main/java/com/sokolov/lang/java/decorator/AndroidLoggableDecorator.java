@@ -8,7 +8,7 @@ import com.sokolov.lang.java.field.FieldFromString;
 import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
-import com.sokolov.lang.java.method.AndroidLoggableMethod;
+import com.sokolov.lang.java.method.android.AndroidLoggableMethod;
 import com.sokolov.lang.java.method.IMethod;
 
 import java.util.ArrayList;

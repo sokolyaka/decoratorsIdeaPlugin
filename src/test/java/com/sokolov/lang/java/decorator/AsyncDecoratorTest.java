@@ -1,7 +1,7 @@
 package com.sokolov.lang.java.decorator;
 
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
-import com.sokolov.lang.java.method.async.Java8AsyncMethodBuilder;
+import com.sokolov.lang.java.method.java.async.Java8AsyncMethodBuilder;
 import org.junit.Assert;
 import org.junit.Test;
 

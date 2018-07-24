@@ -1,17 +1,15 @@
-package com.sokolov.lang.java.method;
+package com.sokolov.lang.java.method.java.async;
 
+import com.sokolov.lang.java.method.IMethod;
 import com.sokolov.lang.java.parameter.IParameter;
 
 import java.util.List;
 
-public class SyncMethod implements IMethod {
-
+public class Java7AsyncMethod implements IMethod {
     private final IMethod origin;
-    private final String syncObjectFieldName;
 
-    public SyncMethod(IMethod origin, String syncObjectFieldName) {
+    public Java7AsyncMethod(IMethod origin) {
         this.origin = origin;
-        this.syncObjectFieldName = syncObjectFieldName;
     }
 
     @Override
@@ -28,11 +26,11 @@ public class SyncMethod implements IMethod {
     public String implementation() {
         StringBuilder sb = new StringBuilder(origin.implementation());
         int startIndex = sb.indexOf("{") + 1;
-        sb.insert(startIndex, "synchronized (" + syncObjectFieldName + "){");
+        sb.insert(startIndex, "executorService.execute(new Runnable(){@Override public void run(){");
+
         int endIndex = sb.lastIndexOf("}");
-        sb.insert(endIndex, "}");
+        sb.insert(endIndex, "}});");
 
         return sb.toString();
-
     }
 }
