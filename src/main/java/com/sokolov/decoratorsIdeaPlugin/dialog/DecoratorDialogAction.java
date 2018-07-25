@@ -71,6 +71,8 @@ public class DecoratorDialogAction extends BaseIntentionAction {
         checkBoxPanel.add(cbSync);
         JCheckBox cbAndroidLoggable = new JCheckBox("AndroidLoggable");
         checkBoxPanel.add(cbAndroidLoggable);
+        JCheckBox cbSafe = new JCheckBox("Safe");
+        checkBoxPanel.add(cbSafe);
 
         JPanel myPanel = new JPanel();
         myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
@@ -105,6 +107,9 @@ public class DecoratorDialogAction extends BaseIntentionAction {
                 decorator =
                         new AndroidLoggableDecorator(
                                 decorator);
+            } else if (cbSafe.isSelected()) {
+                decorator =
+                        new SafeDecorator(decorator);
             }
 
             IDecorator finalDecorator = decorator;
