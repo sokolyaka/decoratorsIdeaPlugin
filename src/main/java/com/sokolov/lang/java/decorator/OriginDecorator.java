@@ -54,7 +54,7 @@ public class OriginDecorator implements IDecorator {
 
     @Override
     public String className() {
-        return "class " + name + " implements " + iInterface.name();
+        return name + " implements " + iInterface.name();
     }
 
     @Override

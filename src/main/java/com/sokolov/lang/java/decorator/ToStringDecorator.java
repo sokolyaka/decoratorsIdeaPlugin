@@ -56,7 +56,7 @@ public class ToStringDecorator implements IDecorator {
             sb.append(importDef);
         }
         sb.append(accessLevel())
-                .append(" ")
+                .append(" class ")
                 .append(className())
                 .append("{");
 
