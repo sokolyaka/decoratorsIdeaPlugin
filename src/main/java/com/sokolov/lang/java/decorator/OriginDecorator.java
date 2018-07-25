@@ -38,6 +38,11 @@ public class OriginDecorator implements IDecorator {
     }
 
     @Override
+    public String accessLevel() {
+        return iInterface.accessLevel();
+    }
+
+    @Override
     public String packageDef() {
         return "package " + packageDef + ";";
     }
@@ -49,7 +54,7 @@ public class OriginDecorator implements IDecorator {
 
     @Override
     public String className() {
-        return "public class " + name + " implements " + iInterface.name();
+        return "class " + name + " implements " + iInterface.name();
     }
 
     @Override

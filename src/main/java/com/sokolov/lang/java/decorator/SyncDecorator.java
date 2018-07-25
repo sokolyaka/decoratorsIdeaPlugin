@@ -23,6 +23,11 @@ public class SyncDecorator implements IDecorator {
     }
 
     @Override
+    public String accessLevel() {
+        return origin.accessLevel();
+    }
+
+    @Override
     public String packageDef() {
         return origin.packageDef();
     }

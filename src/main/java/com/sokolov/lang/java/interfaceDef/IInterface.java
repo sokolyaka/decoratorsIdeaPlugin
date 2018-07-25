@@ -10,4 +10,6 @@ public interface IInterface {
     String name();
 
     List<String> methods();
+
+    String accessLevel();
 }

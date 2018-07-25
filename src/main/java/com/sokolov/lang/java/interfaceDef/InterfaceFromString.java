@@ -65,4 +65,18 @@ public class InterfaceFromString implements IInterface {
         }
         return result;
     }
+
+    @Override
+    public String accessLevel() {
+        String head = interfaceStr
+                .substring(
+                        0,
+                        interfaceStr.indexOf("interface "))
+                .trim();
+        if (head.contains("public")) {
+            return "public";
+        } else {
+            return "";
+        }
+    }
 }
