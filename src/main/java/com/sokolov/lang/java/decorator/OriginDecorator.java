@@ -9,6 +9,7 @@ import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.method.*;
+import com.sokolov.lang.java.method.java.CommentClearMethod;
 import com.sokolov.lang.java.method.java.MethodFromString;
 import com.sokolov.lang.java.method.java.OriginMethod;
 import com.sokolov.lang.java.method.java.OverrideMethod;
