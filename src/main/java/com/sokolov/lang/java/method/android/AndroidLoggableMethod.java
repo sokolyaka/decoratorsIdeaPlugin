@@ -34,7 +34,12 @@ public class AndroidLoggableMethod implements IMethod {
     }
 
     private String logm() {
-        return "Log.d(" + tagFieldName + ", \"" + origin.name() + "() called with:" + parametersDeclaration() + "\");";
+        String prefix = "Log.d(" + tagFieldName + ", \"" + origin.name() + "() called";
+        if (parameters() != null && parameters().size() > 0) {
+            return prefix + " with:" + parametersDeclaration() + "\");";
+        } else {
+            return prefix + "\");";
+        }
     }
 
     private String parametersDeclaration() {
