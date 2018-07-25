@@ -80,7 +80,8 @@ public class OriginDecorator implements IDecorator {
                     new OriginMethod(
                             new OverrideMethod(
                                     new PublicMethod(
-                                            new MethodFromString(method)))));
+                                            new CommentClearMethod(
+                                                    new MethodFromString(method))))));
         }
 
         return methods;
