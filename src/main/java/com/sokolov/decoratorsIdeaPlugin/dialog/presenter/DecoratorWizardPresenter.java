@@ -4,12 +4,14 @@ import com.sokolov.decoratorsIdeaPlugin.dialog.domain.ICreateDecoratorUseCase;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.verifyClassName.IVerifyClassNameUseCase;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.verifyPackage.IVerifyPackageDefUseCase;
 import com.sokolov.decoratorsIdeaPlugin.dialog.view.IDecoratorWizardView;
+import com.sokolov.lang.java.interfaceDef.IInterface;
 
 public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
     private final IDecoratorWizardView wizardView;
     private final IVerifyClassNameUseCase verifyClassNameUseCase;
     private final IVerifyPackageDefUseCase verifyPackageDefUseCase;
     private final ICreateDecoratorUseCase createDecoratorUseCase;
+    private final IInterface iInterface;
 
     private String className;
     private String packageDef;
@@ -19,12 +21,22 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
             IDecoratorWizardView wizardView,
             IVerifyClassNameUseCase verifyClassNameUseCase,
             IVerifyPackageDefUseCase verifyPackageDefUseCase,
-            ICreateDecoratorUseCase createDecoratorUseCase) {
+            ICreateDecoratorUseCase createDecoratorUseCase,
+            IInterface iInterface) {
 
         this.wizardView = wizardView;
         this.verifyClassNameUseCase = verifyClassNameUseCase;
         this.verifyPackageDefUseCase = verifyPackageDefUseCase;
         this.createDecoratorUseCase = createDecoratorUseCase;
+        this.iInterface = iInterface;
+    }
+
+    @Override
+    public void onCreated() {
+        className = "Decorator" + iInterface.name();
+        wizardView.updateClassName(className);
+        packageDef = iInterface.packageDef();
+        wizardView.updatePackageDef(packageDef);
     }
 
     @Override
@@ -52,6 +64,11 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
 
     @Override
     public void onConfirm() {
-        createDecoratorUseCase.execute(packageDef, className, decoratorType);
+        createDecoratorUseCase
+                .execute(
+                        packageDef,
+                        className,
+                        decoratorType,
+                        iInterface);
     }
 }
