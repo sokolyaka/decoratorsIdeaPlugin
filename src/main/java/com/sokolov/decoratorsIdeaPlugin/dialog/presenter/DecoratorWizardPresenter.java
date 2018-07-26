@@ -2,7 +2,7 @@ package com.sokolov.decoratorsIdeaPlugin.dialog.presenter;
 
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.ICreateDecoratorUseCase;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.verifyClassName.IVerifyClassNameUseCase;
-import com.sokolov.decoratorsIdeaPlugin.dialog.domain.IVerifyPackageDefUseCase;
+import com.sokolov.decoratorsIdeaPlugin.dialog.domain.verifyPackage.IVerifyPackageDefUseCase;
 import com.sokolov.decoratorsIdeaPlugin.dialog.view.IDecoratorWizardView;
 
 public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
