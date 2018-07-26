@@ -8,4 +8,6 @@ public interface IDecoratorWizardView {
     void updateClassName(String className);
 
     void updatePackageDef(String packageDef);
+
+    void setOkBtnEnable(boolean isEnable);
 }

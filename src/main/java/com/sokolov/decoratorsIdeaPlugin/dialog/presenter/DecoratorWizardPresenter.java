@@ -19,6 +19,9 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
     private String packageDef;
     private int decoratorType;
 
+    private boolean isClassNameValid;
+    private boolean isPackageDefValid;
+
     public DecoratorWizardPresenter(
             IDecoratorWizardView wizardView,
             IVerifyClassNameUseCase verifyClassNameUseCase,
@@ -37,27 +40,45 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
     public void onCreated() {
         className = "Decorator" + iInterface.name();
         wizardView.updateClassName(className);
+        isClassNameValid = true;
+
         packageDef = iInterface.packageDef();
         wizardView.updatePackageDef(packageDef);
+        isPackageDefValid = true;
+
         decoratorType = ORIGIN;
     }
 
     @Override
     public void onClassNameChanged(String className) {
-        if (verifyClassNameUseCase.execute(className)) {
+        isClassNameValid = verifyClassNameUseCase.execute(className);
+
+        if (isClassNameValid) {
             this.className = className;
         } else {
             wizardView.showInvalidClassNameError();
         }
+
+        checkAndSetOkBtnEnable();
     }
 
     @Override
     public void onPackageNameChanged(String packageDef) {
-        if (verifyPackageDefUseCase.execute(packageDef)) {
+        isPackageDefValid = verifyPackageDefUseCase.execute(packageDef);
+
+        if (isPackageDefValid) {
             this.packageDef = packageDef;
         } else {
             wizardView.showInvalidPackageDefError();
         }
+
+        checkAndSetOkBtnEnable();
+    }
+
+    private void checkAndSetOkBtnEnable() {
+        wizardView.setOkBtnEnable(
+                isClassNameValid
+                        && isPackageDefValid);
     }
 
     @Override
