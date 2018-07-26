@@ -6,6 +6,8 @@ import com.sokolov.decoratorsIdeaPlugin.dialog.domain.verifyPackage.IVerifyPacka
 import com.sokolov.decoratorsIdeaPlugin.dialog.view.IDecoratorWizardView;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 
+import static com.sokolov.decoratorsIdeaPlugin.dialog.domain.DecoratorTypes.ORIGIN;
+
 public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
     private final IDecoratorWizardView wizardView;
     private final IVerifyClassNameUseCase verifyClassNameUseCase;
@@ -37,6 +39,7 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
         wizardView.updateClassName(className);
         packageDef = iInterface.packageDef();
         wizardView.updatePackageDef(packageDef);
+        decoratorType = ORIGIN;
     }
 
     @Override
