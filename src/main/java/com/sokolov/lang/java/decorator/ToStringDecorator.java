@@ -56,7 +56,9 @@ public class ToStringDecorator implements IDecorator {
 
     public String asString() {
         StringBuilder sb = new StringBuilder();
-        sb.append(packageDef());
+        sb.append("package ")
+                .append(packageDef())
+                .append(";");
         for (String importDef : imports()) {
             sb.append(importDef);
         }

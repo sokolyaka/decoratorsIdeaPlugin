@@ -49,7 +49,7 @@ public class OriginDecorator implements IDecorator {
 
     @Override
     public String packageDef() {
-        return "package " + packageDef + ";";
+        return packageDef;
     }
 
     @Override
