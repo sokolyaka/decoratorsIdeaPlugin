@@ -1,6 +1,7 @@
 package com.sokolov.lang.java.parameter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ListOfParametersFromString implements IListOfParameters {
@@ -12,6 +13,10 @@ public class ListOfParametersFromString implements IListOfParameters {
 
     @Override
     public List<IParameter> asList() {
+        if (listOfParams.isEmpty()) {
+            return Collections.emptyList();
+        }
+
         String[] params;
         if (listOfParams.contains("<")) {
             params = getParamsWithGenerics();

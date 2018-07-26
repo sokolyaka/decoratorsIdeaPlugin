@@ -40,4 +40,10 @@ public class ListOfParametersFromStringTest {
             Assert.assertEquals(expectedParam.type(), actualParam.type());
         }
     }
+
+    @Test
+    public void asListParamWithEmptyParam() {
+        List<IParameter> actual = new ListOfParametersFromString("").asList();
+        Assert.assertTrue(actual.size() == 0);
+    }
 }

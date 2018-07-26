@@ -26,10 +26,14 @@ public class OriginMethod implements IMethod {
                                         methodNameWithParams.indexOf(')')))
                         .asList();
         StringBuilder sb = new StringBuilder();
-        for (IParameter param : parameters) {
-            sb.append(param.name()).append(',');
+        for (int i = 0; i < parameters.size(); i++) {
+            IParameter param = parameters.get(i);
+            sb.append(param.name());
+            if (i < parameters.size() - 1) {
+                sb.append(',');
+            }
         }
-        return sb.deleteCharAt(sb.length() - 1).toString();
+        return sb.toString();
     }
 
     @Override
