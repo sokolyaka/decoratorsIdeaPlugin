@@ -2,13 +2,16 @@ package com.sokolov.decoratorsIdeaPlugin.dialog;
 
 import com.intellij.codeInsight.intention.impl.BaseIntentionAction;
 import com.intellij.ide.highlighter.JavaFileType;
-import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.module.Module;
+import com.intellij.openapi.module.ModuleManager;
+import com.intellij.openapi.module.ModuleUtil;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.util.IncorrectOperationException;
+import com.sokolov.decoratorsIdeaPlugin.dialog.domain.addDecoratorToProject.AddDecoratorToProjectUseCase;
 import com.sokolov.lang.java.decorator.*;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 import com.sokolov.lang.java.method.android.inMainThread.Java8InMainThreadMethodBuilder;
@@ -111,23 +114,14 @@ public class DecoratorDialogAction extends BaseIntentionAction {
                 decorator =
                         new SafeDecorator(decorator);
             }
-
-            IDecorator finalDecorator = decorator;
-            ApplicationManager
-                    .getApplication()
-                    .runWriteAction(() -> {
-                        file
-                                .getContainingDirectory()
-                                .add(
-                                        PsiFileFactory
-                                                .getInstance(project)
-                                                .createFileFromText(
-                                                        classNameField.getText() + ".java",
-                                                        JavaFileType.INSTANCE,
-                                                        new ToStringDecorator(
-                                                                finalDecorator)
-                                                                .asString()));
-                    });
+            Module moduleForFile = ModuleUtil.findModuleForFile(file);
+            if (moduleForFile == null) {
+                moduleForFile = ModuleManager.getInstance(project).getModules()[0];
+            }
+            new AddDecoratorToProjectUseCase(
+                    moduleForFile,
+                    PsiFileFactory.getInstance(project))
+                    .execute(decorator);
         }
     }
 
