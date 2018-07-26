@@ -38,6 +38,8 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
 
     @Override
     public void onCreated() {
+        wizardView.show();
+
         className = "Decorator" + iInterface.name();
         wizardView.updateClassName(className);
         isClassNameValid = true;

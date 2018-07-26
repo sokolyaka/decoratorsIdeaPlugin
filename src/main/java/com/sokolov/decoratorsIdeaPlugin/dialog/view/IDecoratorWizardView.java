@@ -10,4 +10,6 @@ public interface IDecoratorWizardView {
     void updatePackageDef(String packageDef);
 
     void setOkBtnEnable(boolean isEnable);
+
+    void show();
 }
