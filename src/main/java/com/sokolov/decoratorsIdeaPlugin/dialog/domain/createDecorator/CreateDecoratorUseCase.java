@@ -1,7 +1,6 @@
 package com.sokolov.decoratorsIdeaPlugin.dialog.domain.createDecorator;
 
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.DecoratorTypes;
-import com.sokolov.decoratorsIdeaPlugin.dialog.domain.ICreateDecoratorUseCase;
 import com.sokolov.lang.java.decorator.*;
 import com.sokolov.lang.java.interfaceDef.IInterface;
 import com.sokolov.lang.java.method.android.inMainThread.Java7InMainThreadMethodBuilder;

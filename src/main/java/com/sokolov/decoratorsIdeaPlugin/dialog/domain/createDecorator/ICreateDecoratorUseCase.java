@@ -1,4 +1,4 @@
-package com.sokolov.decoratorsIdeaPlugin.dialog.domain;
+package com.sokolov.decoratorsIdeaPlugin.dialog.domain.createDecorator;
 
 import com.sokolov.lang.java.decorator.IDecorator;
 import com.sokolov.lang.java.interfaceDef.IInterface;
