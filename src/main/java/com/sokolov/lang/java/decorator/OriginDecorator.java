@@ -38,6 +38,11 @@ public class OriginDecorator implements IDecorator {
     }
 
     @Override
+    public String interfaceName() {
+        return iInterface.name();
+    }
+
+    @Override
     public String accessLevel() {
         return iInterface.accessLevel();
     }
@@ -54,7 +59,7 @@ public class OriginDecorator implements IDecorator {
 
     @Override
     public String className() {
-        return name + " implements " + iInterface.name();
+        return name;
     }
 
     @Override

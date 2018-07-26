@@ -23,6 +23,11 @@ public class AndroidLoggableDecorator implements IDecorator {
     }
 
     @Override
+    public String interfaceName() {
+        return origin.interfaceName();
+    }
+
+    @Override
     public String accessLevel() {
         return origin.accessLevel();
     }

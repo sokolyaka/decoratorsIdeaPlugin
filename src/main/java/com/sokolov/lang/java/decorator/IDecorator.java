@@ -7,6 +7,8 @@ import com.sokolov.lang.java.method.IMethod;
 import java.util.List;
 
 public interface IDecorator {
+    String interfaceName();
+
     String accessLevel();
 
     String packageDef();

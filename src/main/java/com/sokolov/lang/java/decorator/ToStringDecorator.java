@@ -15,6 +15,11 @@ public class ToStringDecorator implements IDecorator {
     }
 
     @Override
+    public String interfaceName() {
+        return origin.interfaceName();
+    }
+
+    @Override
     public String accessLevel() {
         return origin.accessLevel();
     }
@@ -58,6 +63,8 @@ public class ToStringDecorator implements IDecorator {
         sb.append(accessLevel())
                 .append(" class ")
                 .append(className())
+                .append(" implements ")
+                .append(interfaceName())
                 .append("{");
 
         for (IField field : fields()) {
