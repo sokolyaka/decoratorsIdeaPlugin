@@ -2,12 +2,13 @@
     <id>com.sokolov.decoratorsIdeaPlugin</id>
     <name>Decorators set</name>
     <vendor email="sokolov.ob@gmail.com" url="https://github.com/sokolyaka">Sokolov Oleh</vendor>
-
+    <idea-version since-build="171.3780"/>
     <description><![CDATA[
     Set of <a href="https://en.wikipedia.org/wiki/Decorator_pattern">the Decorator pattern</a> implementations.
     ]]></description>
 
     <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.java</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
