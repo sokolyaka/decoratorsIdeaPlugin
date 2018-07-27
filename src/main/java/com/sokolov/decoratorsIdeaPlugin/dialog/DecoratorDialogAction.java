@@ -2,6 +2,7 @@ package com.sokolov.decoratorsIdeaPlugin.dialog;
 
 import com.intellij.codeInsight.intention.impl.BaseIntentionAction;
 import com.intellij.ide.highlighter.JavaFileType;
+import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
@@ -11,11 +12,13 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.util.IncorrectOperationException;
+import com.sokolov.decoratorsIdeaPlugin.dialog.domain.addDecoratorToProject.InWriteActionAddDecoratorToProjectUseCase;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.addDecoratorToProject.AddDecoratorToPsiDirectoryUseCase;
 import com.sokolov.lang.java.decorator.*;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
 import com.sokolov.lang.java.method.android.inMainThread.Java8InMainThreadMethodBuilder;
 import com.sokolov.lang.java.method.java.async.Java8AsyncMethodBuilder;
+
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -118,9 +121,11 @@ public class DecoratorDialogAction extends BaseIntentionAction {
             if (moduleForFile == null) {
                 moduleForFile = ModuleManager.getInstance(project).getModules()[0];
             }
-            new AddDecoratorToPsiDirectoryUseCase(
-                    ModuleManager.getInstance(project),
-                    PsiFileFactory.getInstance(project))
+            new InWriteActionAddDecoratorToProjectUseCase(
+                    new AddDecoratorToPsiDirectoryUseCase(
+                            ModuleManager.getInstance(project),
+                            PsiFileFactory.getInstance(project)),
+                    ApplicationManager.getApplication())
                     .execute(decorator, moduleForFile.getName());
         }
     }
