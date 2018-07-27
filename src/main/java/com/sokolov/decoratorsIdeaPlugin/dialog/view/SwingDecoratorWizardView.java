@@ -61,15 +61,15 @@ public class SwingDecoratorWizardView implements IDecoratorWizardView {
                 .addDocumentListener(
                         new DocumentListener() {
                             public void changedUpdate(DocumentEvent e) {
-                                wizardPresenter.onPackageNameChanged(classNameField.getText());
+                                wizardPresenter.onPackageNameChanged(packageField.getText());
                             }
 
                             public void removeUpdate(DocumentEvent e) {
-                                wizardPresenter.onPackageNameChanged(classNameField.getText());
+                                wizardPresenter.onPackageNameChanged(packageField.getText());
                             }
 
                             public void insertUpdate(DocumentEvent e) {
-                                wizardPresenter.onPackageNameChanged(classNameField.getText());
+                                wizardPresenter.onPackageNameChanged(packageField.getText());
                             }
                         });
 
