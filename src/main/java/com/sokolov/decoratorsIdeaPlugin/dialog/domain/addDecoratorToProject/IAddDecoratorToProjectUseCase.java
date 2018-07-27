@@ -4,5 +4,5 @@ import com.sokolov.lang.java.decorator.IDecorator;
 
 public interface IAddDecoratorToProjectUseCase {
 
-    void execute(IDecorator decorator);
+    void execute(IDecorator decorator, String moduleName);
 }

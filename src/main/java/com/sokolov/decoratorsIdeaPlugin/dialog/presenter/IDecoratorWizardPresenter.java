@@ -10,6 +10,8 @@ public interface IDecoratorWizardPresenter {
 
     void onDecoratorTypeSelected(int type);
 
+    void onModuleSelected(String artifactId);
+
     void onConfirm();
 
 }

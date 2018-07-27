@@ -17,10 +17,12 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
     private final ICreateDecoratorUseCase createDecoratorUseCase;
     private final IAddDecoratorToProjectUseCase addDecoratorToProjectUseCase;
     private final IInterface iInterface;
+    private final String[] moduleNames;
 
     private String className;
     private String packageDef;
     private int decoratorType;
+    private String moduleName;
 
     private boolean isClassNameValid;
     private boolean isPackageDefValid;
@@ -31,7 +33,8 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
             IVerifyPackageDefUseCase verifyPackageDefUseCase,
             ICreateDecoratorUseCase createDecoratorUseCase,
             IAddDecoratorToProjectUseCase addDecoratorToProjectUseCase,
-            IInterface iInterface) {
+            IInterface iInterface,
+            String[] moduleNames) {
 
         this.wizardView = wizardView;
         this.verifyClassNameUseCase = verifyClassNameUseCase;
@@ -39,6 +42,7 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
         this.createDecoratorUseCase = createDecoratorUseCase;
         this.addDecoratorToProjectUseCase = addDecoratorToProjectUseCase;
         this.iInterface = iInterface;
+        this.moduleNames = moduleNames;
     }
 
     @Override
@@ -54,6 +58,8 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
         isPackageDefValid = true;
 
         decoratorType = ORIGIN;
+
+        moduleName = moduleNames[0];
     }
 
     @Override
@@ -94,6 +100,11 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
     }
 
     @Override
+    public void onModuleSelected(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    @Override
     public void onConfirm() {
         IDecorator decorator =
                 createDecoratorUseCase
@@ -103,6 +114,6 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
                                 decoratorType,
                                 iInterface);
 
-        addDecoratorToProjectUseCase.execute(decorator);
+        addDecoratorToProjectUseCase.execute(decorator, moduleName);
     }
 }

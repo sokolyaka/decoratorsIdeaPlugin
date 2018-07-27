@@ -119,9 +119,9 @@ public class DecoratorDialogAction extends BaseIntentionAction {
                 moduleForFile = ModuleManager.getInstance(project).getModules()[0];
             }
             new AddDecoratorToPsiDirectoryUseCase(
-                    moduleForFile,
+                    ModuleManager.getInstance(project),
                     PsiFileFactory.getInstance(project))
-                    .execute(decorator);
+                    .execute(decorator, moduleForFile.getName());
         }
     }
 
