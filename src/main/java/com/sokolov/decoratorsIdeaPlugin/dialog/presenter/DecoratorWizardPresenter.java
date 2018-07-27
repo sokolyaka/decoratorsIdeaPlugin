@@ -47,7 +47,7 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
 
     @Override
     public void onCreated() {
-        wizardView.show();
+        wizardView.init();
 
         className = "Decorator" + iInterface.name();
         wizardView.updateClassName(className);
@@ -61,6 +61,8 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
 
         moduleName = moduleNames[0];
         wizardView.setUpModuleNames(moduleNames, moduleName);
+
+        wizardView.show();
     }
 
     @Override

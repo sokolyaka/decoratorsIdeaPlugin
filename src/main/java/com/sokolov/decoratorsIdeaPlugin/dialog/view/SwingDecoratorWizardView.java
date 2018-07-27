@@ -6,7 +6,10 @@ import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresent
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
+import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -14,17 +17,21 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 public class SwingDecoratorWizardView implements IDecoratorWizardView {
-    private final IDecoratorWizardPresenter wizardPresenter;
+    private IDecoratorWizardPresenter wizardPresenter;
 
     private JTextField packageField;
     private JTextField classNameField;
+    private JButton okayBtn;
+    private JPanel mainPanel;
+    private JButton cancel;
 
-    public SwingDecoratorWizardView(IDecoratorWizardPresenter wizardPresenter) {
+    @Override
+    public void setWizardPresenter(IDecoratorWizardPresenter wizardPresenter) {
         this.wizardPresenter = wizardPresenter;
     }
 
     @Override
-    public void show() {
+    public void init() {
         JPanel classNamePanel = new JPanel();
         classNamePanel.add(new JLabel("Class name:"));
         classNameField = new JTextField(25);
@@ -103,11 +110,44 @@ public class SwingDecoratorWizardView implements IDecoratorWizardView {
         group.add(rbSafe);
         rbPanel.add(rbSafe);
 
-        JPanel myPanel = new JPanel();
-        myPanel.setLayout(new BoxLayout(myPanel, BoxLayout.Y_AXIS));
-        myPanel.add(classNamePanel);
-        myPanel.add(packagePanel);
-        myPanel.add(rbPanel);
+        mainPanel = new JPanel();
+        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.add(classNamePanel);
+        mainPanel.add(packagePanel);
+        mainPanel.add(rbPanel);
+
+        okayBtn = new JButton("Ok");
+        okayBtn.addActionListener(e -> {
+            JOptionPane pane = getOptionPane((JComponent) e.getSource());
+            pane.setValue(okayBtn);
+        });
+
+        okayBtn.setEnabled(true);
+        cancel = new JButton("Cancel");
+        cancel.addActionListener(e -> {
+            JOptionPane pane = getOptionPane((JComponent) e.getSource());
+            pane.setValue(cancel);
+        });
+    }
+
+    @Override
+    public void show() {
+
+
+        int result =
+                JOptionPane.showOptionDialog(
+                        null,
+                        mainPanel,
+                        "Generate decorator",
+                        JOptionPane.OK_CANCEL_OPTION,
+                        JOptionPane.PLAIN_MESSAGE,
+                        null,
+                        new Object[]{okayBtn, cancel},
+                        okayBtn);
+
+        if (result == JOptionPane.OK_OPTION) {
+            wizardPresenter.onConfirm();
+        }
     }
 
     @Override
@@ -132,11 +172,21 @@ public class SwingDecoratorWizardView implements IDecoratorWizardView {
 
     @Override
     public void setOkBtnEnable(boolean isEnable) {
-
+        okayBtn.setEnabled(isEnable);
     }
 
     @Override
     public void setUpModuleNames(String[] moduleNames, String preSelectedModule) {
 
+    }
+
+    private static JOptionPane getOptionPane(JComponent parent) {
+        JOptionPane pane = null;
+        if (!(parent instanceof JOptionPane)) {
+            pane = getOptionPane((JComponent) parent.getParent());
+        } else {
+            pane = (JOptionPane) parent;
+        }
+        return pane;
     }
 }

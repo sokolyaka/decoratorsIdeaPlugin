@@ -1,6 +1,12 @@
 package com.sokolov.decoratorsIdeaPlugin.dialog.view;
 
+import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresenter;
+
 public interface IDecoratorWizardView {
+    void init();
+
+    void show();
+
     void showInvalidClassNameError();
 
     void showInvalidPackageDefError();
@@ -11,7 +17,7 @@ public interface IDecoratorWizardView {
 
     void setOkBtnEnable(boolean isEnable);
 
-    void show();
+    void setWizardPresenter(IDecoratorWizardPresenter wizardPresenter);
 
     void setUpModuleNames(String[] moduleNames, String preSelectedModule);
 }
