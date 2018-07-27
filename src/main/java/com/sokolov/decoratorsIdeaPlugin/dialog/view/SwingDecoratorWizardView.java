@@ -1,5 +1,6 @@
 package com.sokolov.decoratorsIdeaPlugin.dialog.view;
 
+import com.intellij.ui.JBColor;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.DecoratorTypes;
 import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresenter;
 
@@ -9,18 +10,14 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class SwingDecoratorWizardView implements IDecoratorWizardView {
     private final IDecoratorWizardPresenter wizardPresenter;
 
     private JTextField packageField;
     private JTextField classNameField;
-    private JRadioButton rbOrigin;
-    private JRadioButton rbAsync;
-    private JRadioButton rbInMainThread;
-    private JRadioButton rbSync;
-    private JRadioButton rbAndroidLoggable;
-    private JRadioButton rbSafe;
 
     public SwingDecoratorWizardView(IDecoratorWizardPresenter wizardPresenter) {
         this.wizardPresenter = wizardPresenter;
@@ -31,11 +28,44 @@ public class SwingDecoratorWizardView implements IDecoratorWizardView {
         JPanel classNamePanel = new JPanel();
         classNamePanel.add(new JLabel("Class name:"));
         classNameField = new JTextField(25);
+        classNameField
+                .getDocument()
+                .addDocumentListener(
+                        new DocumentListener() {
+                            public void changedUpdate(DocumentEvent e) {
+                                wizardPresenter.onClassNameChanged(classNameField.getText());
+                            }
+
+                            public void removeUpdate(DocumentEvent e) {
+                                wizardPresenter.onClassNameChanged(classNameField.getText());
+                            }
+
+                            public void insertUpdate(DocumentEvent e) {
+                                wizardPresenter.onClassNameChanged(classNameField.getText());
+                            }
+                        });
         classNamePanel.add(classNameField);
 
         JPanel packagePanel = new JPanel();
         packagePanel.add(new JLabel("Destination package:"));
         packageField = new JTextField(25);
+        packageField
+                .getDocument()
+                .addDocumentListener(
+                        new DocumentListener() {
+                            public void changedUpdate(DocumentEvent e) {
+                                wizardPresenter.onPackageNameChanged(classNameField.getText());
+                            }
+
+                            public void removeUpdate(DocumentEvent e) {
+                                wizardPresenter.onPackageNameChanged(classNameField.getText());
+                            }
+
+                            public void insertUpdate(DocumentEvent e) {
+                                wizardPresenter.onPackageNameChanged(classNameField.getText());
+                            }
+                        });
+
         packagePanel.add(packageField);
 
         JPanel rbPanel = new JPanel();
@@ -43,32 +73,32 @@ public class SwingDecoratorWizardView implements IDecoratorWizardView {
         rbPanel.add(new JLabel("Select decorator type:"));
 
         ButtonGroup group = new ButtonGroup();
-        rbOrigin = new JRadioButton("Origin", true);
+        JRadioButton rbOrigin = new JRadioButton("Origin", true);
         rbOrigin.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ORIGIN));
         group.add(rbOrigin);
         rbPanel.add(rbOrigin);
 
-        rbAsync = new JRadioButton("Async", false);
+        JRadioButton rbAsync = new JRadioButton("Async", false);
         rbAsync.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ASYNC));
         group.add(rbAsync);
         rbPanel.add(rbAsync);
 
-        rbInMainThread = new JRadioButton("InMainThread", false);
+        JRadioButton rbInMainThread = new JRadioButton("InMainThread", false);
         rbInMainThread.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.IN_MAIN_THREAD));
         group.add(rbInMainThread);
         rbPanel.add(rbInMainThread);
 
-        rbSync = new JRadioButton("Sync", false);
+        JRadioButton rbSync = new JRadioButton("Sync", false);
         rbSync.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SYNC));
         group.add(rbSync);
         rbPanel.add(rbSync);
 
-        rbAndroidLoggable = new JRadioButton("AndroidLoggable", false);
+        JRadioButton rbAndroidLoggable = new JRadioButton("AndroidLoggable", false);
         rbAndroidLoggable.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ANDROID_LOG));
         group.add(rbAndroidLoggable);
         rbPanel.add(rbAndroidLoggable);
 
-        rbSafe = new JRadioButton("Safe", false);
+        JRadioButton rbSafe = new JRadioButton("Safe", false);
         rbSafe.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SAFE));
         group.add(rbSafe);
         rbPanel.add(rbSafe);
@@ -82,22 +112,22 @@ public class SwingDecoratorWizardView implements IDecoratorWizardView {
 
     @Override
     public void showInvalidClassNameError() {
-
+        classNameField.setForeground(JBColor.RED);
     }
 
     @Override
     public void showInvalidPackageDefError() {
-
+        packageField.setForeground(JBColor.RED);
     }
 
     @Override
     public void updateClassName(String className) {
-
+        classNameField.setText(className);
     }
 
     @Override
     public void updatePackageDef(String packageDef) {
-
+        packageField.setText(packageDef);
     }
 
     @Override
