@@ -27,7 +27,7 @@ public class AddDecoratorToPsiDirectoryUseCase implements IAddDecoratorToProject
             }
         }
         if (moduleForFile == null) {
-            throw new IllegalArgumentException("artifactId = " + moduleName);
+            throw new IllegalArgumentException("moduleName = " + moduleName);
         }
 
         PsiDirectory directory =
