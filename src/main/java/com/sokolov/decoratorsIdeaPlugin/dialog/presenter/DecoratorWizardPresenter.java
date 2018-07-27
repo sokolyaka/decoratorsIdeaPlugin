@@ -60,6 +60,7 @@ public class DecoratorWizardPresenter implements IDecoratorWizardPresenter {
         decoratorType = ORIGIN;
 
         moduleName = moduleNames[0];
+        wizardView.setUpModuleNames(moduleNames, moduleName);
     }
 
     @Override

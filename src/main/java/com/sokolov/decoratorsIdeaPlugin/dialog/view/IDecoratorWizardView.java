@@ -12,4 +12,6 @@ public interface IDecoratorWizardView {
     void setOkBtnEnable(boolean isEnable);
 
     void show();
+
+    void setUpModuleNames(String[] moduleNames, String preSelectedModule);
 }
