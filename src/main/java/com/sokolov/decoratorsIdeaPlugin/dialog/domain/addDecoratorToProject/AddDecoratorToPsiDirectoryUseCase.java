@@ -8,11 +8,11 @@ import com.intellij.psi.PsiFileFactory;
 import com.sokolov.lang.java.decorator.IDecorator;
 import com.sokolov.lang.java.decorator.ToStringDecorator;
 
-public class AddDecoratorToProjectUseCase implements IAddDecoratorToProjectUseCase {
+public class AddDecoratorToPsiDirectoryUseCase implements IAddDecoratorToProjectUseCase {
     private final Module moduleForFile;
     private final PsiFileFactory psiFileFactory;
 
-    public AddDecoratorToProjectUseCase(Module moduleForFile, PsiFileFactory psiFileFactory) {
+    public AddDecoratorToPsiDirectoryUseCase(Module moduleForFile, PsiFileFactory psiFileFactory) {
         this.moduleForFile = moduleForFile;
         this.psiFileFactory = psiFileFactory;
     }
