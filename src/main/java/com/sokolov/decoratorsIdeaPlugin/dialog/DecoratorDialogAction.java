@@ -6,6 +6,7 @@ import com.intellij.openapi.application.ApplicationManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.module.Module;
 import com.intellij.openapi.module.ModuleManager;
+import com.intellij.openapi.module.ModuleUtilCore;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiFile;
 import com.intellij.psi.PsiFileFactory;
@@ -19,9 +20,8 @@ import com.sokolov.decoratorsIdeaPlugin.dialog.domain.verifyPackage.PsiVerifyPac
 import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.DecoratorWizardPresenter;
 import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresenter;
 import com.sokolov.decoratorsIdeaPlugin.dialog.view.IDecoratorWizardView;
-import com.sokolov.decoratorsIdeaPlugin.dialog.view.SwingDecoratorWizardView;
+import com.sokolov.decoratorsIdeaPlugin.dialog.view.WizardDialog;
 import com.sokolov.lang.java.interfaceDef.InterfaceFromString;
-
 import org.jetbrains.annotations.Nls;
 import org.jetbrains.annotations.NotNull;
 
@@ -49,7 +49,7 @@ public class DecoratorDialogAction extends BaseIntentionAction {
 
     @Override
     public void invoke(@NotNull Project project, Editor editor, PsiFile file) throws IncorrectOperationException {
-        IDecoratorWizardView wizardView = new SwingDecoratorWizardView();
+        IDecoratorWizardView wizardView = new WizardDialog(project);
         IDecoratorWizardPresenter wizardPresenter =
                 new DecoratorWizardPresenter(
                         wizardView,
@@ -66,10 +66,7 @@ public class DecoratorDialogAction extends BaseIntentionAction {
                                 editor
                                         .getDocument()
                                         .getText()),
-                        getModulesNames(
-                                ModuleManager
-                                        .getInstance(project)
-                                        .getModules()));
+                        new String[]{ModuleUtilCore.findModuleForPsiElement(file).getName()});
 
         wizardView.setWizardPresenter(wizardPresenter);
         wizardPresenter.onCreated();
