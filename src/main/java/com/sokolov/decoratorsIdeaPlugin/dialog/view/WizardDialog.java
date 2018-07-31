@@ -1,23 +1,25 @@
 package com.sokolov.decoratorsIdeaPlugin.dialog.view;
 
 import com.intellij.openapi.project.Project;
+import com.intellij.openapi.ui.ComboBox;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.ui.components.JBLabel;
-import com.intellij.ui.components.JBRadioButton;
 import com.intellij.ui.components.JBTextField;
+import com.intellij.ui.components.panels.VerticalLayout;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.DecoratorTypes;
 import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresenter;
 
 import org.jetbrains.annotations.Nullable;
 
+import java.awt.event.ItemEvent;
 import java.util.Queue;
 import java.util.concurrent.ArrayBlockingQueue;
 
-import javax.swing.BoxLayout;
-import javax.swing.ButtonGroup;
 import javax.swing.JComponent;
 import javax.swing.JPanel;
+
+import static javax.swing.SwingConstants.LEFT;
 
 public class WizardDialog extends DialogWrapper implements IDecoratorWizardView {
 
@@ -63,43 +65,45 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
         packageField = new JBTextField(25);
         packagePanel.add(packageField);
 
+        ComboBox<String> comboBox = new ComboBox<>(new String[]{"Origin", "Async", "InMainThread", "Sync", "AndroidLoggable", "Safe"});
+        comboBox.addItemListener(e -> {
+            if (e.getStateChange() == ItemEvent.SELECTED) {
+                String item = (String) e.getItem();
+                switch (item) {
+                    case "Origin": {
+                        wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ORIGIN);
+                        break;
+                    }
+                    case "Async": {
+                        wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ASYNC);
+                        break;
+                    }
+                    case "InMainThread": {
+                        wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.IN_MAIN_THREAD);
+                        break;
+                    }
+                    case "Sync": {
+                        wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SYNC);
+                        break;
+                    }
+                    case "AndroidLoggable": {
+                        wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ANDROID_LOG);
+                        break;
+                    }
+                    case "Safe": {
+                        wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SAFE);
+                        break;
+                    }
+                }
+            }
+        });
+
         JPanel rbPanel = new JPanel();
-        rbPanel.setLayout(new BoxLayout(rbPanel, BoxLayout.Y_AXIS));
         rbPanel.add(new JBLabel("Select decorator type:"));
-
-        ButtonGroup group = new ButtonGroup();
-        JBRadioButton rbOrigin = new JBRadioButton("Origin", true);
-        rbOrigin.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ORIGIN));
-        group.add(rbOrigin);
-        rbPanel.add(rbOrigin);
-
-        JBRadioButton rbAsync = new JBRadioButton("Async", false);
-        rbAsync.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ASYNC));
-        group.add(rbAsync);
-        rbPanel.add(rbAsync);
-
-        JBRadioButton rbInMainThread = new JBRadioButton("InMainThread", false);
-        rbInMainThread.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.IN_MAIN_THREAD));
-        group.add(rbInMainThread);
-        rbPanel.add(rbInMainThread);
-
-        JBRadioButton rbSync = new JBRadioButton("Sync", false);
-        rbSync.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SYNC));
-        group.add(rbSync);
-        rbPanel.add(rbSync);
-
-        JBRadioButton rbAndroidLoggable = new JBRadioButton("AndroidLoggable", false);
-        rbAndroidLoggable.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ANDROID_LOG));
-        group.add(rbAndroidLoggable);
-        rbPanel.add(rbAndroidLoggable);
-
-        JBRadioButton rbSafe = new JBRadioButton("Safe", false);
-        rbSafe.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SAFE));
-        group.add(rbSafe);
-        rbPanel.add(rbSafe);
+        rbPanel.add(comboBox);
 
         mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new VerticalLayout(5, LEFT));
         mainPanel.add(classNamePanel);
         mainPanel.add(packagePanel);
         mainPanel.add(rbPanel);
@@ -139,7 +143,7 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
 
     @Override
     public void setUpModuleNames(String[] moduleNames, String preSelectedModule) {
-
+        // TODO: 31.07.2018  ModulesComboBox.java
     }
 
     @Override
