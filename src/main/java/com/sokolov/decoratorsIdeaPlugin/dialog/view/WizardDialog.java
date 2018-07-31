@@ -12,7 +12,7 @@ import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresent
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.ArrayBlockingQueue;
 
 import javax.swing.BoxLayout;
 import javax.swing.ButtonGroup;
@@ -31,7 +31,8 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
 
     public WizardDialog(@Nullable Project project) {
         super(project);
-        validateQ = new ConcurrentLinkedQueue<>();
+        validateQ = new ArrayBlockingQueue<>(1);
+
     }
 
     @Nullable
@@ -108,12 +109,12 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
 
     @Override
     public void showInvalidClassNameError() {
-        validateQ.add(new ValidationInfo("Invalid class name", classNameField));
+        validateQ.offer(new ValidationInfo("Invalid class name", classNameField));
     }
 
     @Override
     public void showInvalidPackageDefError() {
-        validateQ.add(new ValidationInfo("Invalid package", packageField));
+        validateQ.offer(new ValidationInfo("Invalid package", packageField));
     }
 
     @Override
@@ -139,5 +140,14 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
     @Override
     public void setUpModuleNames(String[] moduleNames, String preSelectedModule) {
 
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        int exitCode = getExitCode();
+        if (exitCode == OK_EXIT_CODE) {
+            wizardPresenter.onConfirm();
+        }
     }
 }
