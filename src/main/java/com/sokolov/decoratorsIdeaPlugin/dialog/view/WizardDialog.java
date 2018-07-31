@@ -6,6 +6,7 @@ import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
 import com.intellij.ui.components.JBLabel;
 import com.intellij.ui.components.JBTextField;
+import com.intellij.ui.components.panels.HorizontalLayout;
 import com.intellij.ui.components.panels.VerticalLayout;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.DecoratorTypes;
 import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresenter;
@@ -55,12 +56,13 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
     @Override
     public void init() {
         setTitle("Decorator Wizard");
-        JPanel classNamePanel = new JPanel();
-        classNamePanel.add(new JBLabel("Class name:"));
+        JPanel classNamePanel = new JPanel(new HorizontalLayout(55));
+        JBLabel comp = new JBLabel("Class name:");
+        classNamePanel.add(comp);
         classNameField = new JBTextField(25);
         classNamePanel.add(classNameField);
 
-        JPanel packagePanel = new JPanel();
+        JPanel packagePanel = new JPanel(new HorizontalLayout(8));
         packagePanel.add(new JBLabel("Destination package:"));
         packageField = new JBTextField(25);
         packagePanel.add(packageField);
@@ -98,7 +100,7 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
             }
         });
 
-        JPanel rbPanel = new JPanel();
+        JPanel rbPanel = new JPanel(new HorizontalLayout(4));
         rbPanel.add(new JBLabel("Select decorator type:"));
         rbPanel.add(comboBox);
 
