@@ -3,13 +3,21 @@ package com.sokolov.decoratorsIdeaPlugin.dialog.view;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.DialogWrapper;
 import com.intellij.openapi.ui.ValidationInfo;
+import com.intellij.ui.components.JBLabel;
+import com.intellij.ui.components.JBRadioButton;
+import com.intellij.ui.components.JBTextField;
 import com.sokolov.decoratorsIdeaPlugin.dialog.domain.DecoratorTypes;
 import com.sokolov.decoratorsIdeaPlugin.dialog.presenter.IDecoratorWizardPresenter;
+
 import org.jetbrains.annotations.Nullable;
 
-import javax.swing.*;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JComponent;
+import javax.swing.JPanel;
 
 public class WizardDialog extends DialogWrapper implements IDecoratorWizardView {
 
@@ -17,8 +25,8 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
 
     private IDecoratorWizardPresenter wizardPresenter;
 
-    private JTextField packageField;
-    private JTextField classNameField;
+    private JBTextField packageField;
+    private JBTextField classNameField;
     private JPanel mainPanel;
 
     public WizardDialog(@Nullable Project project) {
@@ -45,46 +53,46 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
     public void init() {
         setTitle("Decorator Wizard");
         JPanel classNamePanel = new JPanel();
-        classNamePanel.add(new JLabel("Class name:"));
-        classNameField = new JTextField(25);
+        classNamePanel.add(new JBLabel("Class name:"));
+        classNameField = new JBTextField(25);
         classNamePanel.add(classNameField);
 
         JPanel packagePanel = new JPanel();
-        packagePanel.add(new JLabel("Destination package:"));
-        packageField = new JTextField(25);
+        packagePanel.add(new JBLabel("Destination package:"));
+        packageField = new JBTextField(25);
         packagePanel.add(packageField);
 
         JPanel rbPanel = new JPanel();
         rbPanel.setLayout(new BoxLayout(rbPanel, BoxLayout.Y_AXIS));
-        rbPanel.add(new JLabel("Select decorator type:"));
+        rbPanel.add(new JBLabel("Select decorator type:"));
 
         ButtonGroup group = new ButtonGroup();
-        JRadioButton rbOrigin = new JRadioButton("Origin", true);
+        JBRadioButton rbOrigin = new JBRadioButton("Origin", true);
         rbOrigin.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ORIGIN));
         group.add(rbOrigin);
         rbPanel.add(rbOrigin);
 
-        JRadioButton rbAsync = new JRadioButton("Async", false);
+        JBRadioButton rbAsync = new JBRadioButton("Async", false);
         rbAsync.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ASYNC));
         group.add(rbAsync);
         rbPanel.add(rbAsync);
 
-        JRadioButton rbInMainThread = new JRadioButton("InMainThread", false);
+        JBRadioButton rbInMainThread = new JBRadioButton("InMainThread", false);
         rbInMainThread.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.IN_MAIN_THREAD));
         group.add(rbInMainThread);
         rbPanel.add(rbInMainThread);
 
-        JRadioButton rbSync = new JRadioButton("Sync", false);
+        JBRadioButton rbSync = new JBRadioButton("Sync", false);
         rbSync.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SYNC));
         group.add(rbSync);
         rbPanel.add(rbSync);
 
-        JRadioButton rbAndroidLoggable = new JRadioButton("AndroidLoggable", false);
+        JBRadioButton rbAndroidLoggable = new JBRadioButton("AndroidLoggable", false);
         rbAndroidLoggable.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.ANDROID_LOG));
         group.add(rbAndroidLoggable);
         rbPanel.add(rbAndroidLoggable);
 
-        JRadioButton rbSafe = new JRadioButton("Safe", false);
+        JBRadioButton rbSafe = new JBRadioButton("Safe", false);
         rbSafe.addActionListener(e -> wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SAFE));
         group.add(rbSafe);
         rbPanel.add(rbSafe);
