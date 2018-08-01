@@ -9,6 +9,7 @@ import com.sokolov.lang.java.method.IMethodBuilder;
 import com.sokolov.lang.java.parameter.IParameter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class CustomDecorator implements IDecorator {
@@ -18,6 +19,15 @@ public class CustomDecorator implements IDecorator {
     private final List<IFieldInitialization> fieldInitializations;
     private final List<IField> customFields;
     private final List<String> customImports;
+
+    public CustomDecorator(IDecorator origin, IMethodBuilder methodBuilder) {
+        this.origin = origin;
+        this.methodBuilder = methodBuilder;
+        constructorParams = Collections.emptyList();
+        fieldInitializations = Collections.emptyList();
+        customFields = Collections.emptyList();
+        customImports = Collections.emptyList();
+    }
 
     public CustomDecorator(
             IDecorator origin,
