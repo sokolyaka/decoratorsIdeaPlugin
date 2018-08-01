@@ -67,7 +67,7 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
         packageField = new JBTextField(25);
         packagePanel.add(packageField);
 
-        ComboBox<String> comboBox = new ComboBox<>(new String[]{"Origin", "Async", "InMainThread", "Sync", "AndroidLoggable", "Safe"});
+        ComboBox<String> comboBox = new ComboBox<>(new String[]{"Origin", "Async", "InMainThread", "Sync", "AndroidLoggable", "Safe", "Custom"});
         comboBox.addItemListener(e -> {
             if (e.getStateChange() == ItemEvent.SELECTED) {
                 String item = (String) e.getItem();
@@ -94,6 +94,10 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
                     }
                     case "Safe": {
                         wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.SAFE);
+                        break;
+                    }
+                    case "Custom": {
+                         wizardPresenter.onDecoratorTypeSelected(DecoratorTypes.CUSTOM);
                         break;
                     }
                 }

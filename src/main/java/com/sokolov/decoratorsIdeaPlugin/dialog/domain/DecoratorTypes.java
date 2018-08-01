@@ -7,6 +7,7 @@ public class DecoratorTypes {
     public static final int IN_MAIN_THREAD = 3;
     public static final int SAFE = 4;
     public static final int SYNC = 5;
+    public static final int CUSTOM = 6;
 
     private DecoratorTypes() {
     }
