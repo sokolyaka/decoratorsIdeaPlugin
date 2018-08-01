@@ -1,12 +1,13 @@
 package com.sokolov.lang.java.method.java.async;
 
 import com.sokolov.lang.java.method.IMethod;
+import com.sokolov.lang.java.method.IMethodBuilder;
 
-public class Java7AsyncMethodBuilder implements IAsyncMethodBuilder {
+public class Java7AsyncMethodBuilder implements IMethodBuilder {
     private IMethod origin;
 
     @Override
-    public IAsyncMethodBuilder setOrigin(IMethod origin) {
+    public IMethodBuilder setOrigin(IMethod origin) {
         this.origin = origin;
 
         return this;

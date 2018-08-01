@@ -1,12 +1,13 @@
 package com.sokolov.lang.java.method.android.inMainThread;
 
 import com.sokolov.lang.java.method.IMethod;
+import com.sokolov.lang.java.method.IMethodBuilder;
 
-public class Java8InMainThreadMethodBuilder implements IInMainThreadMethodBuilder {
+public class Java8InMainThreadMethodBuilder implements IMethodBuilder {
     private IMethod origin;
 
     @Override
-    public IInMainThreadMethodBuilder setOrigin(IMethod origin) {
+    public IMethodBuilder setOrigin(IMethod origin) {
         this.origin = origin;
         return this;
     }

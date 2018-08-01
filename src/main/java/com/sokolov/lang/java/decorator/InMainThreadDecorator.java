@@ -9,16 +9,16 @@ import com.sokolov.lang.java.field.FinalField;
 import com.sokolov.lang.java.field.IField;
 import com.sokolov.lang.java.field.PrivateField;
 import com.sokolov.lang.java.method.IMethod;
-import com.sokolov.lang.java.method.android.inMainThread.IInMainThreadMethodBuilder;
+import com.sokolov.lang.java.method.IMethodBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InMainThreadDecorator implements IDecorator {
     private final IDecorator origin;
-    private final IInMainThreadMethodBuilder inMainThreadMethodBuilder;
+    private final IMethodBuilder inMainThreadMethodBuilder;
 
-    public InMainThreadDecorator(IDecorator origin, IInMainThreadMethodBuilder inMainThreadMethodBuilder) {
+    public InMainThreadDecorator(IDecorator origin, IMethodBuilder inMainThreadMethodBuilder) {
         this.origin = origin;
         this.inMainThreadMethodBuilder = inMainThreadMethodBuilder;
     }
