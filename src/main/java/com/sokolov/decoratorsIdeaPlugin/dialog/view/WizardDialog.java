@@ -160,4 +160,10 @@ public class WizardDialog extends DialogWrapper implements IDecoratorWizardView 
             wizardPresenter.onConfirm();
         }
     }
+
+    @Nullable
+    @Override
+    public JComponent getPreferredFocusedComponent() {
+        return classNameField;
+    }
 }
