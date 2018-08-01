@@ -1,4 +1,4 @@
-Copyright (c) 2018 Sokolov Oleh.
+Copyright (c) 2018 Oleh Sokolov.
 
 Permission is hereby granted, free of charge, to any person obtaining
 a copy of this software and associated documentation files (the
