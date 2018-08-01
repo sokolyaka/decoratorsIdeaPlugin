@@ -39,7 +39,9 @@ public class AndroidLoggableDecorator implements IDecorator {
 
     @Override
     public List<String> imports() {
-        return origin.imports();
+        List<String> result = new ArrayList<>(origin.imports());
+        result.add("import android.util.Log;");
+        return result;
     }
 
     @Override
@@ -58,7 +60,7 @@ public class AndroidLoggableDecorator implements IDecorator {
     public IConstructor constructor() {
         IConstructor oConstructor = origin.constructor();
         List<IFieldInitialization> initializations = new ArrayList<>(oConstructor.initializations());
-        initializations.add(new FieldInitialization(TAG_FIELD_NAME, className()+".class.getSimpleName()"));
+        initializations.add(new FieldInitialization(TAG_FIELD_NAME, className() + ".class.getSimpleName()"));
         return new ConstructorWithParams(oConstructor.name(), oConstructor.params(), oConstructor.accessLevel(), initializations);
 
     }
